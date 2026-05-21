@@ -1,0 +1,2192 @@
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SUJO INDIAN | Futuristic Luxury E-Commerce</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700;900&family=Inter:wght@300;400;700;900&family=Poppins:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&family=Dancing+Script:wght@400;700&family=Mrs+Saint+Delafield&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              cyber: {
+                dark: '#050505',
+                glass: 'rgba(255, 255, 255, 0.03)',
+                card: 'rgba(255, 255, 255, 0.03)',
+                accent: '#00A3FF',
+                blue: '#00A3FF',
+                violet: '#7a00ff',
+                success: '#10b981',
+                text: '#f3f4f6'
+              }
+            },
+            fontFamily: {
+              orbitron: ['Orbitron', 'sans-serif'],
+              poppins: ['Inter', 'sans-serif'],
+              sans: ['Inter', 'sans-serif'],
+              mono: ['Fira Code', 'monospace'],
+              cursive: ['"Dancing Script"', 'cursive'],
+              signature: ['"Mrs Saint Delafield"', 'cursive']
+            },
+            boxShadow: {
+              'neon-blue': '0 0 15px rgba(0, 163, 255, 0.5), 0 0 30px rgba(0, 163, 255, 0.2)',
+              'neon-cyan': '0 0 15px rgba(0, 163, 255, 0.6), 0 0 30px rgba(0, 163, 255, 0.2)',
+              'neon-glow': '0 0 20px rgba(0, 163, 255, 0.4), inset 0 0 15px rgba(0, 163, 255, 0.1)',
+            }
+          }
+        }
+      }
+    </script>
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Custom Futuristic Animations & Styles -->
+    <style>
+      ::-webkit-scrollbar {
+        width: 6px;
+      }
+      ::-webkit-scrollbar-track {
+        background: #050505;
+      }
+      ::-webkit-scrollbar-thumb {
+        background: #00A3FF;
+        border-radius: 3px;
+      }
+      ::-webkit-scrollbar-thumb:hover {
+        background: #00A3FF;
+      }
+
+      /* Scanline & Grid Effect overlay */
+      .cyber-grid {
+        background-size: 40px 40px;
+        background-image: 
+          linear-gradient(to right, rgba(0, 163, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(to bottom, rgba(0, 163, 255, 0.05) 1px, transparent 1px);
+      }
+      
+      .scanline::after {
+        content: " ";
+        display: block;
+        position: fixed;
+        top: 0; left: 0; bottom: 0; right: 0;
+        background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 0, 0, 0.06), rgba(0, 255, 0, 0.02), rgba(0, 0, 255, 0.06));
+        z-index: 99999;
+        background-size: 100% 4px, 3px 100%;
+        pointer-events: none;
+        opacity: 0.4;
+      }
+
+      /* Elegant glowing animations */
+      @keyframes float {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-12px) rotate(0.5deg); }
+      }
+      .animate-float {
+        animation: float 6s ease-in-out infinite;
+      }
+
+      @keyframes float-slower {
+        0%, 100% { transform: translateY(0px) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(-0.5deg); }
+      }
+      .animate-float-slower {
+        animation: float-slower 8s ease-in-out infinite;
+      }
+
+      @keyframes hologram-glow {
+        0%, 100% { filter: drop-shadow(0 0 10px rgba(0, 163, 255, 0.4)); }
+        50% { filter: drop-shadow(0 0 25px rgba(0, 163, 255, 0.8)) hue-rotate(15deg); }
+      }
+      .animate-hologram {
+        animation: hologram-glow 4s ease-in-out infinite;
+      }
+
+      @keyframes pulse-cyan {
+        0%, 100% { box-shadow: 0 0 10px rgba(0, 163, 255, 0.2); }
+        50% { box-shadow: 0 0 25px rgba(0, 163, 255, 0.6); }
+      }
+      .animate-pulse-cyan {
+        animation: pulse-cyan 3s infinite;
+      }
+
+      /* Glassmorphism glass effect */
+      .glass {
+        background: rgba(255, 255, 255, 0.03);
+        backdrop-filter: blur(12px) saturate(180%);
+        -webkit-backdrop-filter: blur(12px) saturate(180%);
+        border: 1px solid rgba(0, 163, 255, 0.2);
+      }
+      .glass-cyan-border {
+        border: 1px solid rgba(0, 163, 255, 0.2);
+      }
+      .glass-cyan-border:hover {
+        border: 1px solid rgba(0, 163, 255, 0.6);
+        box-shadow: 0 0 15px rgba(0, 163, 255, 0.3);
+      }
+
+      /* Cyber banner text flicker */
+      @keyframes neon-flicker {
+        0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+          text-shadow: 0 0 4px rgba(0, 163, 255, 0.6), 0 0 10px rgba(0, 163, 255, 0.6);
+        }
+        20%, 24%, 55% {
+          text-shadow: none;
+        }
+      }
+      .neon-text-glow {
+        animation: neon-flicker 6s infinite alternate;
+      }
+
+      /* Custom Cyber Cursor Customizations */
+      @media (hover: hover) and (pointer: fine) {
+        body, a, button, select, textarea, input, [onclick], [role="button"], label {
+          cursor: none !important;
+        }
+        #custom-cursor-dot, #custom-cursor-ring {
+          display: block !important;
+        }
+      }
+
+      #custom-cursor-dot {
+        width: 8px;
+        height: 8px;
+        background-color: #00A3FF;
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 10000;
+        transform: translate3d(0, 0, 0) translate(-50%, -50%);
+        transition: width 0.15s, height 0.15s, background-color 0.15s;
+        mix-blend-mode: difference;
+        display: none;
+        will-change: transform;
+      }
+
+      #custom-cursor-ring {
+        width: 28px;
+        height: 28px;
+        border: 1.5px solid #00A3FF;
+        border-radius: 50%;
+        position: fixed;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate3d(0, 0, 0) translate(-50%, -50%);
+        transition: width 0.25s cubic-bezier(0.16, 1, 0.3, 1), height 0.25s cubic-bezier(0.16, 1, 0.3, 1), border-color 0.2s, background-color 0.25s;
+        box-shadow: 0 0 10px rgba(0, 163, 255, 0.3);
+        display: none;
+        will-change: transform;
+      }
+    </style>
+  </head>
+  <body class="bg-[#050505] text-gray-100 font-sans min-h-screen relative overflow-x-hidden scanline">
+
+    <!-- Custom Cyber Cursor DOM Pointer Elements -->
+    <div id="custom-cursor-dot"></div>
+    <div id="custom-cursor-ring"></div>
+
+    <!-- Glowing Particles Canvas Background -->
+    <canvas id="particles-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none z-0 opacity-40"></canvas>
+
+    <!-- Animated Loading Screen -->
+    <div id="loading-screen" class="fixed inset-0 bg-[#020205] z-[9999] flex flex-col justify-center items-center transition-all duration-1000 ease-in-out">
+      <div class="relative flex flex-col items-center max-w-sm px-6 text-center">
+        <!-- Cyberspace grid element -->
+        <div class="absolute -inset-10 bg-gradient-to-r from-cyber-blue to-[#00f0ff] rounded-full blur-3xl opacity-10 animate-pulse"></div>
+        
+        <!-- High Fidelity Asteroid Hologram Arena -->
+        <div class="w-52 h-52 mb-6 relative animate-float-slower flex items-center justify-center">
+          <canvas id="asteroid-loading-canvas" width="240" height="240" class="absolute inset-0 z-10 pointer-events-none"></canvas>
+          <div class="absolute inset-4 z-0 bg-[#00f0ff]/10 rounded-full blur-3xl animate-pulse"></div>
+        </div>
+
+        <h2 class="font-orbitron font-extrabold text-2xl tracking-[0.25em] text-white">SUJO INDIAN</h2>
+        <p class="font-mono text-xs text-cyber-accent mt-2 tracking-widest uppercase" id="loader-subheading">System Initialization</p>
+
+        <!-- Loading progress area (progress bar and raw state pct) -->
+        <div id="loader-progress-area" class="w-full transition-all duration-500 flex flex-col items-center">
+          <div class="w-64 h-[3px] bg-gray-900 rounded-full mt-6 overflow-hidden relative">
+            <div id="progress-indicator" class="h-full bg-gradient-to-r from-cyber-blue to-cyber-accent w-0 transition-all duration-300 shadow-[0_0_8px_#00f0ff]"></div>
+          </div>
+
+          <div class="mt-4 font-mono text-[9px] text-gray-500 flex justify-between w-64 uppercase">
+            <span id="loading-status">Establishing Secure Grid...</span>
+            <span id="loading-pct">0%</span>
+          </div>
+        </div>
+
+        <!-- Launch Gateway Area (revealed when loading hits 100% to satisfy browser sound user gestures) -->
+        <div id="loader-launch-area" class="hidden opacity-0 scale-95 transition-all duration-700 flex flex-col items-center gap-4 mt-6">
+          <button id="launch-engine-btn" onclick="triggerCyberLaunch()" class="relative group bg-gradient-to-r from-cyber-blue via-blue-600 to-cyber-accent hover:from-cyber-accent hover:to-cyber-blue text-white font-orbitron font-black text-xs tracking-[0.22em] py-4 px-8 rounded-xl cursor-pointer uppercase shadow-[0_0_20px_rgba(0,163,255,0.25)] hover:shadow-neon-cyan transition-all duration-300 flex items-center justify-center gap-2.5 border border-[#00f0ff]/30">
+            <span>INITIALIZE NEURAL CONNECT</span>
+            <i data-lucide="power" class="w-4 h-4 text-white group-hover:rotate-90 transition-transform duration-500"></i>
+          </button>
+          
+          <p class="font-mono text-[8px] text-emerald-400 tracking-[0.2em] uppercase select-none animate-pulse">
+            [ SECURE DUPLEX AUDIO CHANNELS EQUIPPED & AUTHENTICATED ]
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- Live Toast Notification Center -->
+    <div id="toast-container" class="fixed bottom-6 right-6 z-[999] flex flex-col gap-3 max-w-sm pointer-events-none"></div>
+
+    <!-- Navigation Header -->
+    <header class="fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-transparent py-5 -translate-y-10 opacity-0">
+      <div class="max-w-7xl mx-auto px-6 sm:px-12 flex justify-between items-center">
+        <!-- Majestic glowing brand logo -->
+        <a href="#hero" class="flex items-center gap-3 group">
+          <div class="w-10 h-10 rounded-full overflow-hidden border border-cyber-accent/50 filter drop-shadow-[0_0_8px_rgba(0,163,255,0.6)] group-hover:drop-shadow-[0_0_15px_rgba(0,163,255,0.95)] transition-all duration-300">
+            <img src="./src/assets/images/sujo_logo_1779371213817.png" alt="SUJO INDIAN logo" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
+          </div>
+          <div class="flex flex-col">
+            <span class="font-orbitron font-black text-lg sm:text-xl tracking-[0.2em] text-white leading-none">SUJO</span>
+            <span class="font-mono text-[9px] tracking-[0.45em] text-cyber-accent leading-none mt-1">INDIAN</span>
+          </div>
+        </a>
+
+        <!-- Desktop Navigation Routes -->
+        <nav class="hidden md:flex items-center gap-10 font-orbitron text-xs tracking-[0.2em] uppercase text-gray-300">
+          <a href="#hero" class="hover:text-cyber-accent transition-colors py-2 relative group">
+            CORE
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-cyber-accent transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#reviews" class="hover:text-cyber-accent transition-colors py-2 relative group">
+            RESONANCE
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-cyber-accent transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#ai-agent" class="hover:text-cyber-accent transition-colors py-2 relative group p-1">
+            AI AGENT
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-cyber-accent transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#about" class="hover:text-cyber-accent transition-colors py-2 relative group">
+            LEGACY
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-cyber-accent transition-all duration-300 group-hover:w-full"></span>
+          </a>
+          <a href="#contact" class="hover:text-cyber-accent transition-colors py-2 relative group">
+            CONNECT
+            <span class="absolute bottom-0 left-0 w-0 h-[2px] bg-cyber-accent transition-all duration-300 group-hover:w-full"></span>
+          </a>
+        </nav>
+
+        <!-- Right Side Nav Actions -->
+        <div class="flex items-center gap-4">
+          <!-- Mobile Hamburger Toggle button -->
+          <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-full border border-white/5 hover:border-cyber-accent/30 bg-white/5 cursor-pointer">
+            <i id="mobile-menu-icon" data-lucide="menu" class="w-5 h-5 text-gray-300"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Navigation Drawer -->
+      <div id="mobile-menu" class="hidden md:hidden absolute top-full left-0 w-full glass backdrop-blur-2xl border-b border-white/10 py-6 px-8 flex flex-col gap-6 font-orbitron text-xs tracking-widest uppercase text-gray-200 shadow-xl transition-all duration-300 animate-fade-in">
+        <a href="#hero" onclick="toggleMobileMenu()" class="hover:text-cyber-accent py-2 flex items-center justify-between border-b border-white/5">
+          <span>01 // CORE LINK</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+        <a href="#reviews" onclick="toggleMobileMenu()" class="hover:text-cyber-accent py-2 flex items-center justify-between border-b border-white/5">
+          <span>02 // RESONANCE REPORTS</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+        <a href="#ai-agent" onclick="toggleMobileMenu()" class="hover:text-cyber-accent py-2 flex items-center justify-between border-b border-white/5">
+          <span>03 // SUJO AI AGENT</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+        <a href="#about" onclick="toggleMobileMenu()" class="hover:text-cyber-accent py-2 flex items-center justify-between border-b border-white/5">
+          <span>04 // BRAND LEGACY</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+        <a href="#contact" onclick="toggleMobileMenu()" class="hover:text-cyber-accent py-2 flex items-center justify-between border-b border-white/5">
+          <span>05 // CONNECT TERMINAL</span> <i data-lucide="chevron-right" class="w-4 h-4"></i>
+        </a>
+      </div>
+    </header>
+
+    <!-- Main Platform Body Layout -->
+    <main class="relative z-10 w-full overflow-hidden">
+      
+      <!-- 1. HERO SECTION -->
+      <section id="hero" class="min-h-screen relative flex items-center justify-center pt-24 pb-16 px-6 sm:px-12 cyber-grid">
+        <!-- Ambient glowing grid lighting -->
+        <div class="absolute top-[20%] left-[10%] w-[350px] h-[350px] bg-cyber-blue/10 rounded-full blur-[140px]"></div>
+        <div class="absolute bottom-[20%] right-[10%] w-[400px] h-[400px] bg-cyber-accent/10 rounded-full blur-[160px]"></div>
+
+        <div class="max-w-7xl mx-auto w-full grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+          
+          <!-- Hero Copy Grid -->
+          <div id="hero-copy-pack" class="lg:col-span-7 flex flex-col justify-center text-center lg:text-left space-y-8 opacity-0 translate-y-12 transition-all duration-[1200ms] ease-out">
+            <div class="inline-flex self-center lg:self-start items-center gap-2 border border-cyber-accent/30 bg-cyber-accent/5 px-4 py-2 rounded-full backdrop-blur-md">
+              <span class="w-2 h-2 rounded-full bg-cyber-accent animate-ping"></span>
+              <span class="font-mono text-[9px] tracking-[0.4em] text-cyber-accent uppercase">VERIFIED WEB3 storefront // SUJO v4.1</span>
+            </div>
+
+            <!-- Majestic Main brand Heading with Electric Glowing Font -->
+            <div class="space-y-3">
+              <h1 class="font-orbitron font-black text-4xl sm:text-6xl xl:text-7xl tracking-[0.16em] uppercase text-white leading-tight">
+                SUJO <br class="hidden sm:inline" />
+                <span class="bg-gradient-to-r from-white via-cyan-400 to-cyber-blue bg-clip-text text-transparent filter drop-shadow-[0_0_20px_rgba(0,240,255,0.3)]">INDIAN</span>
+              </h1>
+              <!-- Brand Tagline with customized styling -->
+              <h2 class="font-mono text-sm sm:text-base text-gray-400 uppercase tracking-[0.28em] font-medium leading-relaxed max-w-lg mx-auto lg:mx-0 pt-2 flex items-center justify-center lg:justify-start gap-3">
+                <span class="text-cyber-accent font-bold">“</span>ONE GOAL. ENDLESS OPPORTUNITIES.<span class="text-cyber-accent font-bold">”</span>
+              </h2>
+            </div>
+
+            <p class="font-poppins text-xs sm:text-sm text-gray-400 leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
+              Architecting luxury physical cyberware for Gen Z. Our gear merges uncompromising design heritage with elite performance, engineering an armor set ready for the neon world.
+            </p>
+
+            <!-- Interactive Floating Action Buttons -->
+            <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-5 pt-4">
+              <a href="#contact" class="w-full sm:w-auto bg-gradient-to-r from-cyber-blue via-blue-600 to-cyber-accent hover:shadow-neon-cyan text-white font-orbitron font-black text-xs tracking-[0.2em] py-4 px-10 rounded uppercase relative overflow-hidden group text-center transition-all duration-500 hover:scale-[1.03]">
+                REQUEST SYSTEM BRIEFING
+              </a>
+              <a href="#about" class="w-full sm:w-auto bg-white/5 border border-white/10 hover:border-cyber-accent/40 text-gray-300 hover:text-white font-orbitron font-semibold text-xs tracking-[0.2em] py-4 px-8 rounded uppercase text-center transition-all duration-300 hover:bg-white/10 group">
+                LEARN LEGACY
+              </a>
+            </div>
+
+            <!-- Grid status specs row (cyber aesthetics) -->
+            <div class="grid grid-cols-3 gap-4 border-t border-white/5 pt-8 max-w-md mx-auto lg:mx-0">
+              <div>
+                <p class="font-mono text-[#00f0ff] font-bold text-lg leading-tight">LIMITED</p>
+                <p class="font-mono text-[9px] text-gray-500 tracking-wider mt-1 uppercase">BATCH RELEASES</p>
+              </div>
+              <div class="border-x border-white/5 px-2">
+                <p class="font-mono text-white font-bold text-lg leading-tight">100%</p>
+                <p class="font-mono text-[9px] text-gray-500 tracking-wider mt-1 uppercase">CARBON WEAVE</p>
+              </div>
+              <div>
+                <p class="font-mono text-[#00f0ff] font-bold text-lg leading-tight">SECURE</p>
+                <p class="font-mono text-[9px] text-gray-500 tracking-wider mt-1 uppercase">GRID SHIPPING</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Brand Hologram Logo graphic (floating/rotating SVG setup) -->
+          <!-- Hero Brand Hologram Logo graphic (floating/rotating logo setup) -->
+          <div id="hero-hologram-pack" class="lg:col-span-5 flex justify-center items-center relative py-12 opacity-0 scale-95 transition-all duration-[1400ms] ease-out delay-200">
+            <!-- Glowing neon rings behind the hologram -->
+            <div class="absolute w-72 h-72 sm:w-80 sm:h-80 border border-cyber-accent/20 rounded-full animate-pulse"></div>
+            <div class="absolute w-[340px] h-[340px] border border-dashed border-cyber-blue/15 rounded-full animate-spin [animation-duration:40s]"></div>
+            
+            <div class="w-64 h-64 sm:w-80 sm:h-80 relative flex items-center justify-center animate-float animate-hologram">
+              <div class="absolute inset-0 rounded-full border border-cyber-accent bg-black/60 overflow-hidden shadow-[0_0_30px_rgba(0,163,255,0.4)]">
+                <!-- Video stream of custom logo. Autoplays, loops, and mutes seamlessly. Smoothly reveals self on valid format metadata loaded, hiding static template fallback -->
+                <video src="./src/assets/images/sujo_logo_video.mp4" autoplay loop muted playsinline class="w-full h-full object-cover opacity-95 absolute inset-0 hidden" id="hero-logo-video" onloadedmetadata="this.classList.remove('hidden'); document.getElementById('hero-logo-img').classList.add('hidden');" onerror="this.remove();"></video>
+                <img id="hero-logo-img" src="./src/assets/images/sujo_logo_1779371213817.png" alt="SUJO INDIAN Custom Logo" class="w-full h-full object-cover opacity-90" referrerPolicy="no-referrer" />
+              </div>
+              
+              <!-- Subtle Holographic Scanning Line effect -->
+              <div class="absolute inset-0 bg-gradient-to-b from-transparent via-cyan-500/20 to-transparent h-12 w-full translate-y-[-100%] animate-[scan_3.5s_linear_infinite] pointer-events-none"></div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+
+
+      <!-- 3. REVIEWS SECTION -->
+      <section id="reviews" class="py-24 px-6 sm:px-12 relative border-t border-white/5 bg-[#030206]/95 scroll-mt-12">
+        <div class="absolute top-[10%] right-[5%] w-[320px] h-[320px] bg-cyber-blue/5 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-[10%] left-[5%] w-[320px] h-[320px] bg-[#7a00ff]/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto">
+          
+          <!-- Section Heading -->
+          <div class="space-y-3 mb-16 text-center lg:text-left">
+            <div class="flex items-center justify-center lg:justify-start gap-2 font-mono text-[9px] tracking-[0.4em] text-cyber-accent uppercase">
+              <i data-lucide="star" class="w-3.5 h-3.5 animate-spin [animation-duration:12s]"></i>
+              03 // REPUTATION GRID RATINGS
+            </div>
+            <h2 class="font-orbitron font-extrabold text-3xl sm:text-4xl text-white tracking-[0.12em] uppercase leading-none">
+              RESONANCE REPORTS
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-cyber-blue to-cyan-400 rounded-full mx-auto lg:mx-0"></div>
+            <p class="font-poppins text-xs text-gray-500 max-w-xl font-light pt-2">
+              Feedback telemetry directly emitted from verified elite armor and lifestyle specimen holders.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+            
+            <!-- Left Side: Interactive Review Injector -->
+            <div class="lg:col-span-4">
+              <div class="glass rounded-2xl p-6 sm:p-8 border-cyber-accent/20 space-y-6 relative overflow-hidden backdrop-blur-2xl">
+                <!-- Glowing corner details -->
+                <div class="absolute top-0 right-0 w-12 h-12 border-t border-r border-[#00f0ff]/30 rounded-tr-2xl pointer-events-none"></div>
+                <div class="absolute bottom-0 left-0 w-12 h-12 border-b border-l border-cyber-accent/30 rounded-bl-2xl pointer-events-none"></div>
+
+                <h3 class="font-orbitron font-bold text-base text-white uppercase tracking-widest flex items-center gap-2 border-b border-white/5 pb-4">
+                  <i data-lucide="pen-tool" class="w-4 h-4 text-cyber-accent"></i>
+                  SUBMIT REPORT
+                </h3>
+
+                <form id="review-submission-form" onsubmit="handleReviewSubmission(event)" class="space-y-4">
+                  
+                  <div class="space-y-1.5">
+                    <label class="font-mono text-[9px] tracking-wider text-gray-500 uppercase">HOLDER IDENTIFIER *</label>
+                    <input type="text" id="review-name" required placeholder="Type callsign..." class="w-full bg-[#0d0d0d] border border-white/10 text-white placeholder-gray-650 px-3 py-2.5 rounded text-xs focus:border-[#00f0ff] outline-none transition-all font-mono" />
+                  </div>
+
+                  <div class="space-y-2">
+                    <label class="font-mono text-[9px] tracking-wider text-gray-500 uppercase">SPECIMEN SYNC QUALITY *</label>
+                    <!-- Star selector -->
+                    <div class="flex items-center gap-2 pt-1" id="star-selector-container">
+                      <button type="button" onclick="setReviewRating(1)" onmouseover="highlightStars(1)" onmouseout="resetStarsHighlight()" class="text-gray-650 hover:scale-115 transition-transform duration-200 cursor-pointer star-select-btn text-yellow-400" data-star="1">
+                        <i data-lucide="star" class="w-6 h-6 fill-current stroke-current"></i>
+                      </button>
+                      <button type="button" onclick="setReviewRating(2)" onmouseover="highlightStars(2)" onmouseout="resetStarsHighlight()" class="text-gray-650 hover:scale-115 transition-transform duration-200 cursor-pointer star-select-btn text-yellow-400" data-star="2">
+                        <i data-lucide="star" class="w-6 h-6 fill-current stroke-current"></i>
+                      </button>
+                      <button type="button" onclick="setReviewRating(3)" onmouseover="highlightStars(3)" onmouseout="resetStarsHighlight()" class="text-gray-650 hover:scale-115 transition-transform duration-200 cursor-pointer star-select-btn text-yellow-400" data-star="3">
+                        <i data-lucide="star" class="w-6 h-6 fill-current stroke-current"></i>
+                      </button>
+                      <button type="button" onclick="setReviewRating(4)" onmouseover="highlightStars(4)" onmouseout="resetStarsHighlight()" class="text-gray-650 hover:scale-115 transition-transform duration-200 cursor-pointer star-select-btn text-yellow-400" data-star="4">
+                        <i data-lucide="star" class="w-6 h-6 fill-current stroke-current"></i>
+                      </button>
+                      <button type="button" onclick="setReviewRating(5)" onmouseover="highlightStars(5)" onmouseout="resetStarsHighlight()" class="text-gray-650 hover:scale-115 transition-transform duration-200 cursor-pointer star-select-btn text-yellow-400" data-star="5">
+                        <i data-lucide="star" class="w-6 h-6 fill-current stroke-current"></i>
+                      </button>
+                    </div>
+                    <input type="hidden" id="review-rating-value" value="5" />
+                  </div>
+
+                  <div class="space-y-1.5">
+                    <label class="font-mono text-[9px] tracking-wider text-gray-500 uppercase">TELEMETRY STATEMENT *</label>
+                    <textarea id="review-text" required rows="4" placeholder="Detail your experience with SUJO specifications..." class="w-full bg-[#0d0d0d] border border-white/10 text-white placeholder-gray-650 px-3 py-2.5 rounded text-xs focus:border-[#00f0ff] outline-none transition-all font-light"></textarea>
+                  </div>
+
+                  <button type="submit" class="w-full bg-[#0055ff] hover:bg-white hover:text-black font-orbitron font-bold text-xs tracking-widest py-3 px-4 rounded transition-all duration-300 shadow-[0_4px_12px_rgba(0,85,255,0.2)] hover:shadow-neon-cyan cursor-pointer uppercase flex items-center justify-center gap-2">
+                    <span>EMIT RESONANCE REPORT</span>
+                    <i data-lucide="rss" class="w-3.5 h-3.5"></i>
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            <!-- Right Side: Display list of beautiful reviews grids -->
+            <div class="lg:col-span-8 space-y-6">
+              
+              <!-- Core aggregation stats banner -->
+              <div class="glass rounded-xl p-4 sm:p-5 border-white/5 flex flex-col sm:flex-row items-center justify-between gap-4 font-mono text-xs">
+                <div class="flex items-center gap-3.5 text-center sm:text-left">
+                  <span class="text-white font-orbitron font-black text-3xl text-cyber-accent">4.9</span>
+                  <div>
+                    <div class="flex items-center justify-center sm:justify-start text-yellow-400 gap-0.5">
+                      <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                      <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                      <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                      <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                      <i data-lucide="star" class="w-3.5 h-3.5 fill-current"></i>
+                    </div>
+                    <p class="text-[9px] text-gray-500 uppercase mt-1 tracking-wider">MEAN SYSTEM SATISFACTION INDEX</p>
+                  </div>
+                </div>
+                <div class="h-6 w-[1px] bg-white/10 hidden sm:block"></div>
+                <div class="text-center sm:text-right">
+                  <p class="text-white font-bold uppercase tracking-wider" id="active-review-counter">3 ACTIVE METRICS</p>
+                  <p class="text-[9px] text-[#00f0ff] uppercase tracking-widest mt-1">100% SECURE HOLOGRAM LOGS</p>
+                </div>
+              </div>
+
+              <!-- Scrollable or grid of customer reviews -->
+              <div id="reviews-grid-container" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Populated via Javascript renderReviews() engine -->
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 3b. COGNITIVE BROWSER GRID (AI AGENT & OPERA FRAME) -->
+      <section id="ai-agent" class="py-24 px-6 sm:px-12 relative border-t border-white/5 bg-[#010103] scroll-mt-12">
+        <div class="absolute top-[20%] right-[10%] w-[280px] h-[280px] bg-cyber-blue/5 rounded-full blur-[140px] pointer-events-none"></div>
+        <div class="absolute bottom-[20%] left-[10%] w-[290px] h-[290px] bg-cyber-violet/5 rounded-full blur-[150px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto">
+          
+          <!-- Section Heading -->
+          <div class="space-y-3 mb-12 text-center">
+            <div class="flex items-center justify-center gap-2 font-mono text-[9px] tracking-[0.4em] text-[#00A3FF] uppercase">
+              <i data-lucide="bot" class="w-3.5 h-3.5 animate-bounce"></i>
+              04 // COGNITIVE AGENT GATEWAY
+            </div>
+            <h2 class="font-orbitron font-extrabold text-3xl sm:text-4xl text-white tracking-[0.12em] uppercase leading-none">
+              MIND-GRID BROWSER
+            </h2>
+            <div class="w-24 h-1 bg-gradient-to-r from-cyber-blue to-cyan-400 rounded-full mx-auto"></div>
+            <p class="font-poppins text-xs text-gray-500 max-w-xl font-light pt-2 mx-auto">
+              Engage directly with the <span class="font-cursive text-base text-cyber-blue lowercase font-bold">SUJO Agent</span> intelligence engine. Perfected inside our Opera-optimized secure web viewport environment.
+            </p>
+          </div>
+
+          <!-- The Custom Opera Web Browser Chassis -->
+          <div class="w-full max-w-4xl mx-auto rounded-xl border border-cyber-accent/30 shadow-[0_0_50px_rgba(0,163,255,0.12)] flex flex-col bg-[#06060a]/95 backdrop-blur-3xl overflow-hidden">
+            
+            <!-- Browser Header / Address Bar Viewport -->
+            <div class="flex items-center justify-between px-4 py-3 bg-[#0d0d12] border-b border-white/5 gap-4">
+              <!-- Opera Red & controls circles -->
+              <div class="flex items-center gap-2 shrink-0">
+                <span class="w-3 h-3 rounded-full bg-red-500/80 hover:bg-red-500 transition-colors"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-yellow-500/80 hover:bg-yellow-500 transition-colors"></span>
+                <span class="w-2.5 h-2.5 rounded-full bg-green-500/80 hover:bg-green-500 transition-colors"></span>
+                
+                <!-- Opera Active tab indicator -->
+                <div class="hidden sm:flex items-center gap-2 px-3 py-1 bg-[#13141a] border-t-2 border-cyber-accent rounded-t text-[10px] font-mono text-white tracking-widest ml-4">
+                  <i data-lucide="compass" class="w-3.5 h-3.5 text-cyber-accent animate-spin [animation-duration:10s]"></i>
+                  <span>OPERA_COGNITIVE_TAB.SYS</span>
+                </div>
+              </div>
+
+              <!-- Address Navigator Input -->
+              <div class="flex-grow max-w-lg bg-[#14151c] border border-white/5 rounded px-3 py-1.5 flex items-center justify-between text-[11px] font-mono text-gray-400">
+                <div class="flex items-center gap-2 truncate">
+                  <i data-lucide="shield" class="w-3.5 h-3.5 text-emerald-500"></i>
+                  <span class="text-emerald-500 font-semibold uppercase tracking-widest text-[8px]">ENCRYPTED</span>
+                  <span class="text-gray-600">|</span>
+                  <span class="truncate text-gray-300">sujo://terminal.matrix/sujo-agent-cognitive-link</span>
+                </div>
+                <div class="flex items-center gap-2 shrink-0">
+                  <i data-lucide="rotate-cw" onclick="clearAgentDialog()" class="w-3.5 h-3.5 hover:text-white cursor-pointer transition-colors" title="Reload Terminal Buffer"></i>
+                </div>
+              </div>
+
+              <!-- Extra small status of Browser Bar -->
+              <div class="flex items-center gap-2 text-gray-500">
+                <span class="h-1.5 w-1.5 rounded-full bg-cyber-accent animate-ping mr-1"></span>
+                <span class="text-[8px] font-mono tracking-widest text-emerald-400 uppercase">SYS_SSL_STABLE</span>
+              </div>
+            </div>
+
+            <!-- Opera Frame Content (Sidebar + Responsive Chat Box) -->
+            <div class="flex h-[480px] relative">
+              
+              <!-- Opera Left Gamer Side Dock -->
+              <div class="w-12 sm:w-14 bg-[#09090d] border-r border-white/5 flex flex-col items-center py-4 gap-4 shrink-0 text-gray-400">
+                <!-- Browser active tool -->
+                <div class="w-8 h-8 sm:w-10 sm:h-10 rounded bg-[#00A3FF]/10 border border-[#00A3FF]/30 text-cyber-accent flex items-center justify-center shadow-lg" title="SUJO Neural Link Active">
+                  <i data-lucide="message-square" class="w-4 h-4"></i>
+                </div>
+                <!-- Mini icon shortcuts to standard page routes and tools -->
+                <a href="#products" class="w-8 h-8 sm:w-10 sm:h-10 rounded hover:bg-white/5 hover:text-white flex items-center justify-center transition-colors animate-pulse" title="Go to Catalog Grid">
+                  <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                </a>
+                <a href="#reviews" class="w-8 h-8 sm:w-10 sm:h-10 rounded hover:bg-white/5 hover:text-white flex items-center justify-center transition-colors" title="Go to Reputation Metrics">
+                  <i data-lucide="star" class="w-4 h-4"></i>
+                </a>
+                <a href="#contact" class="w-8 h-8 sm:w-10 sm:h-10 rounded hover:bg-white/5 hover:text-white flex items-center justify-center transition-colors" title="Contact Node Direct">
+                  <i data-lucide="send" class="w-4 h-4"></i>
+                </a>
+                <div class="w-6 h-[1px] bg-white/5 my-1"></div>
+                <!-- Extra status badges of Browser Sidebar -->
+                <div class="flex-grow"></div>
+                <div class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" title="System Security Status: Secured"></div>
+              </div>
+
+              <!-- Main chat workspace inside browser -->
+              <div class="flex-grow flex flex-col justify-between bg-[#06060a] relative overflow-hidden">
+                <!-- Glowing layout lines -->
+                <div class="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(0,163,255,0.03),transparent)] pointer-events-none"></div>
+
+                <!-- Chat history viewport -->
+                <div id="sujo-agent-chat-viewport" class="flex-grow p-4 sm:p-5 overflow-y-auto space-y-4 font-poppins text-xs text-gray-200 scroll-smooth">
+                  <!-- Generated dynamically in renderAgentDialogue() -->
+                </div>
+
+                <!-- Quick assist action tags -->
+                <div class="px-4 py-2 border-t border-white/5 bg-[#0a0a0f]/55 flex items-center gap-2 overflow-x-auto no-scrollbar scroll-smooth">
+                  <span class="font-mono text-[8px] text-gray-500 uppercase tracking-widest shrink-0">Suggestions:</span>
+                  <button onclick="injectPresetAgentQuery('What specifications exist for headphones?')" class="font-mono text-[9px] bg-white/5 text-gray-300 border border-white/10 hover:border-cyber-accent/30 hover:bg-[#00f0ff]/5 px-3 py-1 rounded transition-all cursor-pointer whitespace-nowrap">
+                    🔊 Headphones Specs
+                  </button>
+                  <button onclick="injectPresetAgentQuery('Show products pricing catalog list')" class="font-mono text-[9px] bg-white/5 text-gray-300 border border-white/10 hover:border-cyber-accent/30 hover:bg-[#00f0ff]/5 px-3 py-1 rounded transition-all cursor-pointer whitespace-nowrap">
+                    🛒 Product Pricing
+                  </button>
+                  <button onclick="injectPresetAgentQuery('Do you ship to India?')" class="font-mono text-[9px] bg-white/5 text-gray-300 border border-white/10 hover:border-[#00f0ff]/30 hover:bg-[#00f0ff]/5 px-3 py-1 rounded transition-all cursor-pointer whitespace-nowrap">
+                    🇮🇳 Shipping to India
+                  </button>
+                  <button onclick="injectPresetAgentQuery('Do you have dynamic discount code?')" class="font-mono text-[9px] bg-white/5 text-gray-300 border border-white/10 hover:border-[#00f0ff]/30 hover:bg-[#00f0ff]/5 px-3 py-1 rounded transition-all cursor-pointer whitespace-nowrap">
+                    🎁 Active Coupons
+                  </button>
+                </div>
+
+                <!-- Chat Input bar -->
+                <div class="p-3 sm:p-4 bg-[#0a0a0f] border-t border-white/5 flex gap-2 sm:gap-3 items-center">
+                  <input type="text" id="sujo-agent-input" placeholder="Transmit telemetry query to SUJO Agent... (Press Enter)" class="flex-grow bg-[#13141a] border border-white/10 focus:border-cyber-accent rounded px-3 py-2.5 outline-none font-mono text-xs text-white transition-all placeholder:text-gray-650" onkeypress="catchAgentEnter(event)" />
+                  <button onclick="performAgentChatSubmission()" class="p-2.5 sm:p-3 rounded-lg bg-[#0055ff] hover:bg-[#00A3FF] hover:text-[#020205] transition-all duration-300 text-white cursor-pointer shadow-md select-none shrink-0" title="Transmit Matrix Query">
+                    <i data-lucide="send-horizontal" class="w-4 h-4"></i>
+                  </button>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </section>
+
+      <!-- 4. ABOUT SECTION -->
+      <section id="about" class="py-28 px-6 sm:px-12 relative border-t border-white/5 bg-gradient-to-b from-[#020205] to-[#040612] scroll-mt-12">
+        <!-- Background light elements -->
+        <div class="absolute bottom-[20%] left-[8%] w-[380px] h-[380px] bg-cyber-blue/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+            
+            <!-- Left grid - visual elements -->
+            <div class="lg:col-span-5 order-2 lg:order-1 relative">
+              <div class="absolute -inset-4 bg-gradient-to-r from-cyber-blue to-[#7a00ff] rounded-3xl blur-2xl opacity-10 animate-pulse"></div>
+              
+              <!-- Premium layout block -->
+              <div class="glass rounded-3xl p-8 border-white/5 relative z-10 space-y-6 overflow-hidden">
+                <!-- Decorative geometric borders -->
+                <div class="absolute top-0 right-0 w-24 h-24 border-t-2 border-r-2 border-cyber-accent/30 rounded-tr-3xl"></div>
+                <div class="absolute bottom-0 left-0 w-24 h-24 border-b-2 border-l-2 border-cyber-blue/30 rounded-bl-3xl"></div>
+
+                <div class="flex items-center justify-between">
+                  <div class="font-mono text-[9px] text-[#00f0ff] tracking-widest uppercase flex items-center gap-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-cyber-accent animate-ping"></span>
+                    PLATFORM STATUS INTEGRITY
+                  </div>
+                  <i data-lucide="shield-check" class="w-5 h-5 text-cyber-accent"></i>
+                </div>
+
+                <blockquote class="text-white font-orbitron font-medium text-base sm:text-lg tracking-wide leading-relaxed">
+                  "WE DO NOT ADAPT. WE RECONFIGURE. EVERY COMPONENT OF OUR GEAR IS COMMITTED TO EXTREME DESIGN SPEED."
+                </blockquote>
+
+                <div class="pt-4 border-t border-white/5 space-y-3 font-mono text-xs">
+                  <div class="flex justify-between items-center text-gray-500">
+                    <span>BRAND FOUNDRY</span>
+                    <span class="text-white text-right font-medium">SUJO SYNDICATE</span>
+                  </div>
+                  <div class="flex justify-between items-center text-gray-500">
+                    <span>AESTHETIC SCHEME</span>
+                    <span class="text-cyber-accent text-right font-light">CYBER-NEON LUXURY</span>
+                  </div>
+                  <div class="flex justify-between items-center text-gray-500">
+                    <span>COMPETENCY SCALE</span>
+                    <span class="text-white text-right font-semibold">GLOBAL CORE INF</span>
+                  </div>
+                </div>
+
+                <!-- Live ticking telemetry display -->
+                <div class="bg-black/40 rounded-xl p-4 border border-white/5 font-mono text-[10px] text-gray-500 space-y-1">
+                  <p class="text-cyber-accent flex items-center gap-2">
+                    <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#00f0ff] animate-ping"></span>
+                    SYNCED // SECURE CORE CHRONOMETRY:
+                  </p>
+                  <p id="telemetry-timer" class="text-white">UTC: 2026-05-21 13:36:09</p>
+                  <p class="text-[9px]">ENGINE MATRIX: v5.24 // SHIELD ACTIVE</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Right layout - Copywriting -->
+            <div class="lg:col-span-7 order-1 lg:order-2 space-y-8 text-center lg:text-left">
+              <div class="space-y-3 mx-auto lg:mx-0 max-w-lg">
+                <div class="flex items-center justify-center lg:justify-start gap-2 font-mono text-[9px] tracking-[0.4em] text-cyber-accent uppercase">
+                  <i data-lucide="compass" class="w-3.5 h-3.5"></i>
+                  03 // CORE MISSION STATEMENT
+                </div>
+                <h2 class="font-orbitron font-extrabold text-3xl sm:text-4xl text-white tracking-[0.12em] uppercase leading-none">
+                  SUJO BRAND LEGACY
+                </h2>
+                <div class="w-24 h-1 bg-gradient-to-r from-cyber-blue to-cyber-accent rounded-full mx-auto lg:mx-0"></div>
+              </div>
+
+              <div class="space-y-5 text-gray-400 font-poppins text-xs sm:text-sm leading-relaxed font-light">
+                <p>
+                  Born out of the neon-soaked street-fashion grids of the digitized tomorrow, <strong class="text-white font-medium">SUJO INDIAN</strong> is not just a brand; it’s a modern luxury philosophy. We serve the next generation of hyperconnected gamers, technologists, and digital pioneers who demand that their physical gear stands out with the same high-end customized styling as their global avatars.
+                </p>
+                <p>
+                  Every tech accessory, wearable piece, and lifestyle component from SUJO is sculpted with extreme meticulousness, applying premium carbon fibers, titanium-G5, aero-alloys, and our iconic electric blue neon aura rings. 
+                </p>
+                <p class="font-mono text-[11px] text-cyber-accent tracking-wide">
+                  ONE GOAL. ENDLESS OPPORTUNITIES.
+                </p>
+              </div>
+
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-lg mx-auto lg:mx-0 pt-2 text-left font-orbitron text-xs">
+                <div class="p-4 rounded-xl border border-white/5 bg-white/5 flex items-center gap-4">
+                  <div class="p-2.5 rounded bg-cyber-accent/10 text-cyber-accent">
+                    <i data-lucide="gem" class="w-5 h-5"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider">ELITE SPECS</h4>
+                    <span class="text-gray-500 font-mono text-[9px]">HIGH END FORGE</span>
+                  </div>
+                </div>
+                <div class="p-4 rounded-xl border border-white/5 bg-white/5 flex items-center gap-4">
+                  <div class="p-2.5 rounded bg-cyber-blue/10 text-cyber-blue">
+                    <i data-lucide="globe" class="w-5 h-5 text-[#0055ff]"></i>
+                  </div>
+                  <div>
+                    <h4 class="text-white font-bold uppercase tracking-wider">CYBER SECURE</h4>
+                    <span class="text-gray-500 font-mono text-[9px]">ENCRYPTED LOGISTICS</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- 4. CONTACT SECTION -->
+      <section id="contact" class="py-24 px-6 sm:px-12 relative border-t border-white/5 bg-[#030206] scroll-mt-12">
+        <div class="absolute top-[20%] right-[15%] w-[350px] h-[350px] bg-cyber-accent/5 rounded-full blur-[140px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto">
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-16">
+            
+            <!-- Left Side Details -->
+            <div class="lg:col-span-5 space-y-8 flex flex-col justify-between">
+              <div class="space-y-4">
+                <div class="flex items-center gap-2 font-mono text-[9px] tracking-[0.4em] text-cyber-accent uppercase">
+                  <i data-lucide="radio" class="w-3.5 h-3.5"></i>
+                  04 // TERMINAL CHANNELS
+                </div>
+                <h2 class="font-orbitron font-extrabold text-3xl sm:text-4xl text-white tracking-[0.12em] uppercase leading-none">
+                  CYBER CONNECT
+                </h2>
+                <p class="font-poppins text-xs sm:text-sm text-gray-400 font-light leading-relaxed max-w-md pt-2">
+                  Our network nodes are permanently listening. Transmit custom order queries, collaboration links, or technical feedback into our secure digital mainframe.
+                </p>
+              </div>
+
+              <!-- Functional buttons for socials -->
+              <div class="space-y-4 pt-4 max-w-sm">
+                <!-- Instagram -->
+                <a href="https://instagram.com/indian_sujo" target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/5 hover:border-pink-500/30 hover:bg-pink-500/5 group transition-all duration-300">
+                  <div class="flex items-center gap-4">
+                    <div class="p-2.5 rounded bg-pink-500/10 text-pink-500 group-hover:scale-115 transition-transform">
+                      <i data-lucide="instagram" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-left">
+                      <h4 class="font-orbitron text-xs font-semibold text-white uppercase tracking-wider">INSTAGRAM MATRIX</h4>
+                      <p class="font-mono text-[9px] text-[#00f0ff] group-hover:text-pink-400">@indian_sujo</p>
+                    </div>
+                  </div>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                </a>
+
+                <!-- Email -->
+                <a href="mailto:sujoindian@gmail.com" class="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/5 hover:border-[#10b981]/30 hover:bg-[#10b981]/5 group transition-all duration-300">
+                  <div class="flex items-center gap-4">
+                    <div class="p-2.5 rounded bg-[#10b981]/10 text-[#10b981] group-hover:scale-115 transition-transform">
+                      <i data-lucide="mail" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-left">
+                      <h4 class="font-orbitron text-xs font-semibold text-white uppercase tracking-wider">SECURE DIRECT EMAIL</h4>
+                      <p class="font-mono text-[9px] text-[#00f0ff] group-hover:text-green-400">sujoindian@gmail.com</p>
+                    </div>
+                  </div>
+                  <i data-lucide="arrow-up-right" class="w-4 h-4 text-gray-500 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform"></i>
+                </a>
+
+                <!-- Custom WhatsApp button -->
+                <a id="whatsapp-matrix-btn" href="https://wa.me/919999999999?text=Hello%20SUJO%20INDIAN%2C%20I%20am%20interested%20in%20your%20futuristic%20luxury%20cyberware." target="_blank" class="flex items-center justify-between p-4 rounded-xl border border-white/10 bg-gradient-to-r from-emerald-600/10 to-emerald-500/20 hover:from-emerald-600/20 hover:to-emerald-500/30 border-emerald-500/20 hover:border-emerald-500/50 group transition-all duration-300 shadow-[0_0_15px_rgba(16,185,129,0.1)]">
+                  <div class="flex items-center gap-4">
+                    <div class="p-2.5 rounded bg-emerald-500/20 text-emerald-400 group-hover:scale-115 transition-transform">
+                      <i data-lucide="message-square" class="w-5 h-5"></i>
+                    </div>
+                    <div class="text-left">
+                      <h4 class="font-orbitron text-xs font-black text-white uppercase tracking-wider">LAUNCH WHATSAPP</h4>
+                      <p class="font-mono text-[9px] text-[#00f0ff] group-hover:text-emerald-400">DIRECT ENCRYPTED SECURE</p>
+                    </div>
+                  </div>
+                  <i data-lucide="zap" class="w-4 h-4 text-emerald-400 group-hover:scale-110 animate-pulse transition-transform"></i>
+                </a>
+              </div>
+            </div>
+
+            <!-- Responsive contact Form -->
+            <div class="lg:col-span-7">
+              <div class="glass rounded-2xl p-8 border-white/5 space-y-6 relative overflow-hidden">
+                <h3 class="font-orbitron font-bold text-lg text-white uppercase tracking-widest flex items-center gap-2">
+                  <i data-lucide="send" class="w-5 h-5 text-cyber-accent"></i>
+                  TRANSMIT DIGITAL INTENT
+                </h3>
+                <div class="h-[1px] bg-white/10"></div>
+
+                <form onsubmit="handleContactSubmission(event)" class="space-y-5">
+                  <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                    <div class="space-y-2">
+                      <label class="font-mono text-[9px] tracking-wider text-gray-500 uppercase">IDENTIFIER // NAME *</label>
+                      <input type="text" id="contact-name" required placeholder="Type callsign..." class="w-full bg-[#0d0d0d] border border-white/10 text-white placeholder-gray-650 px-4 py-3 rounded text-sm focus:border-cyber-accent focus:ring-1 focus:ring-cyber-accent/50 outline-none transition-all font-mono" />
+                    </div>
+                    <div class="space-y-2">
+                      <label class="font-mono text-[9px] tracking-wider text-gray-500 uppercase">GRID NODE // EMAIL *</label>
+                      <input type="email" id="contact-email" required placeholder="nodes@grid.com" class="w-full bg-[#0d0d0d] border border-white/10 text-white placeholder-gray-650 px-4 py-3 rounded text-sm focus:border-cyber-accent focus:ring-1 focus:ring-cyber-accent/50 outline-none transition-all font-mono" />
+                    </div>
+                  </div>
+
+                  <div class="space-y-2">
+                    <label class="font-mono text-[9px] tracking-wider text-gray-500 uppercase">PRIORITY SUBJECT</label>
+                    <input type="text" id="contact-subj" placeholder="e.g. CUSTOM AQUISITION REQ" class="w-full bg-[#0d0d0d] border border-white/10 text-white placeholder-gray-650 px-4 py-3 rounded text-sm focus:border-cyber-accent focus:ring-1 focus:ring-cyber-accent/50 outline-none transition-all font-mono" />
+                  </div>
+
+                  <div class="space-y-2">
+                    <label class="font-mono text-[9px] tracking-wider text-gray-500 uppercase">INTENT DESCRIPTION *</label>
+                    <textarea id="contact-msg" required rows="4" placeholder="Detail your matrix transmission here..." class="w-full bg-[#0d0d0d] border border-white/10 text-white placeholder-gray-650 px-4 py-3 rounded text-sm focus:border-cyber-accent focus:ring-1 focus:ring-cyber-accent/50 outline-none transition-all focus:shadow-[0_0_10px_rgba(0,163,255,0.05)] font-light"></textarea>
+                  </div>
+
+                  <button type="submit" class="w-full bg-cyber-blue hover:bg-white hover:text-[#050505] text-white font-orbitron font-bold text-xs tracking-widest py-3.5 px-6 rounded transition-all duration-300 shadow-[0_0_15px_rgba(0,163,255,0.3)] hover:shadow-neon-cyan cursor-pointer uppercase">
+                    EMIT TRANSMISSION
+                  </button>
+                </form>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- 5. FOOTER SECTION -->
+    <footer class="bg-[#020206] py-16 px-6 sm:px-12 border-t border-white/5 relative z-10">
+      <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 items-center">
+        <!-- Brand logo col -->
+        <div class="md:col-span-5 flex flex-col items-center md:items-start text-center md:text-left space-y-4">
+          <a href="#hero" class="flex items-center gap-3">
+            <div class="w-10 h-10 rounded-full overflow-hidden border border-[#00f0ff]/40 filter drop-shadow-[0_0_6px_rgba(16,163,255,0.5)]">
+              <img src="./src/assets/images/sujo_logo_1779371213817.png" alt="SUJO INDIAN logo" class="w-full h-full object-cover" referrerPolicy="no-referrer" />
+            </div>
+            <div class="flex flex-col">
+              <span class="font-orbitron font-black text-lg tracking-[0.2em] text-white leading-none">SUJO</span>
+              <span class="font-mono text-[9px] tracking-[0.45em] text-[#00f0ff] leading-none mt-1">INDIAN</span>
+            </div>
+          </a>
+          <!-- Brand Tagline with customized styling -->
+          <p class="font-mono text-[9px] tracking-[0.22em] text-[#00f0ff] uppercase">
+            “ONE GOAL. ENDLESS OPPORTUNITIES.”
+          </p>
+          <p class="font-poppins text-xs text-gray-500 max-w-sm font-light">
+            Custom cybernetic design, hardware prototyping, high-performance input matrix blueprints, and multi-lens optical layouts engineered for next-generation systems.
+          </p>
+        </div>
+
+        <!-- Social Icons + navigation maps -->
+        <div class="md:col-span-7 flex flex-col items-center md:items-end space-y-6">
+          <div class="flex flex-wrap items-center justify-center gap-8 font-orbitron text-[10px] tracking-widest text-gray-400">
+            <a href="#hero" class="hover:text-[#00f0ff] transition-all">CORE</a>
+            <a href="#reviews" class="hover:text-[#00f0ff] transition-all">GRID</a>
+            <a href="#about" class="hover:text-[#00f0ff] transition-all">LEGACY</a>
+            <a href="#contact" class="hover:text-[#00f0ff] transition-all">CONNECT</a>
+            <a href="#admin" onclick="scrollToAdminPanel()" class="hover:text-cyber-accent font-mono">ADMIN_SYS</a>
+          </div>
+
+          <!-- Glowing Social Circles featuring Instagram logo prominently -->
+          <div class="flex items-center gap-4">
+            <a href="https://instagram.com/indian_sujo" target="_blank" class="w-10 h-10 rounded-full border border-white/5 bg-white/5 flex items-center justify-center hover:border-pink-500/50 hover:bg-pink-500/10 hover:text-pink-400 text-[#00f0ff] transition-all duration-300" title="Connect on Instagram @indian_sujo">
+              <i data-lucide="instagram" class="w-4 h-4"></i>
+            </a>
+            <a href="mailto:sujoindian@gmail.com" class="w-10 h-10 rounded-full border border-white/5 bg-white/5 flex items-center justify-center hover:border-emerald-500/50 hover:bg-emerald-500/10 hover:text-emerald-400 text-gray-400 transition-all duration-300" title="Submit design brief via email">
+              <i data-lucide="mail" class="w-4 h-4"></i>
+            </a>
+            <a href="https://github.com" target="_blank" class="w-10 h-10 rounded-full border border-white/5 bg-white/5 flex items-center justify-center hover:border-violet-500/50 hover:bg-violet-500/10 hover:text-violet-400 text-gray-400 transition-all duration-300" title="Review opensource blueprints">
+              <i data-lucide="github" class="w-4 h-4"></i>
+            </a>
+          </div>
+
+          <div class="text-center md:text-right space-y-1.5 font-mono text-[9px] text-gray-600 uppercase max-w-md">
+            <p class="text-gray-450">&copy; 2026 SUJO INDIAN. ALL RIGHTS RESERVED. “ONE GOAL. ENDLESS OPPORTUNITIES.”</p>
+            <p class="text-gray-500 font-light leading-relaxed">
+              SUJO INDIAN IS A B2B CYBERNETIC COGNITIVE HARDWARE ARCHITECTURE & bespoken PROTOTYPING DESIGN LABORATORY. WE ENGINEERING CUSTOM CAD MATRIX AND BLUEPRINT MODELS — WE DO NOT RETAIL OR SELL DIRECT CONSUMER PRODUCTS.
+            </p>
+            <p class="text-[#00f0ff]/40">DESIGN PROTOCOLS SECURITIZED BY CYBER ENCRYPTION MATRIX.</p>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- INTERTACTIVE JAVASCRIPT SYSTEM ENGINE -->
+    <script>
+      // Default B2B Prototyping Reviews
+      const defaultReviews = [
+        {
+          id: "rev-1",
+          name: "KAVAN PRESTON",
+          rating: 5,
+          text: "THE B2B INDUSTRIAL PROTOTYPING SUITE BY SUJO DELIVERED EXACTLY WHAT OUR HARDWARE STARTUP NEEDED. THEIR CUSTOM ACOUSTICAL MAPPING BLUEPRINTS GAVE US AN UNRIVALED COMPETITIVE EDGE. EXCEPTIONAL TEAM COUPLING!",
+          date: "2026-05-18",
+          verified: true
+        },
+        {
+          id: "rev-2",
+          name: "AARAV SHARMA",
+          rating: 5,
+          text: "THE CUSTOM TITANIUM G5 CASING LAYOUT DESIGNED BY SUJO INDIAN IS SIMPLY MASTERFUL. INTEGRATED THE CRITICAL MULTI-LENS OPTICS SCHEMATICS INTO OUR VR RIG CHASSIS WITH ZERO DELAY OR COUPLING ANOMALIES.",
+          date: "2026-05-20",
+          verified: true
+        },
+        {
+          id: "rev-3",
+          name: "ZOE KURTZ",
+          rating: 4,
+          text: "WE PARTNERED WITH SUJO FOR AN ADAPTIVE DEVICE INTERFACE LAYOUT. THEIR OPTICAL MECHANICAL MATRICES COMPLIANCE AND HIGHLY POLISHED BLUEPRINTS REDUCED OUR PRE-PRODUCTION METRICS BY 30%.",
+          date: "2026-05-21",
+          verified: true
+        },
+        {
+          id: "rev-4",
+          name: "VALERIE VANCE",
+          rating: 5,
+          text: "SUJO INDIAN IS A CRITICAL ASSET FOR OUR WEARABLE ECOSYSTEM. COMMISSIONED A CAD EXPLORATORY PILOT FOR TOUGHENED CARBON SLATE OUTER WEAVES. THE DESIGN METRICS COMPLETELY OUTPERFORMED THE INDUSTRY BENCHMARK.",
+          date: "2026-05-22",
+          verified: true
+        },
+        {
+          id: "rev-5",
+          name: "DEV JOSHI",
+          rating: 5,
+          text: "AN OUTSTANDING HARDWARE DESIGN AGENCY. THEIR THERMAL DESIGN BLUEPRINTS SOLVED OUR PROTOTYPE STALL ISSUES FOR GRAPHENE HEADPHONE CHASSIS. EXTRAORDINARY FLUID ROTOR SIMULATOR SYSTEMS.",
+          date: "2026-05-23",
+          verified: true
+        },
+        {
+          id: "rev-6",
+          name: "ELENA ROSTOVA",
+          rating: 4,
+          text: "SUJO'S DESIGN ARCHITECTS SAVED MY FIRM MONTHS OF HARDWARE RESEARCH. DELIVERED COMPLETED ELECTRONICS SPECIMENS AND OPTICAL LAYOUT DIAGRAMS EXPEDITIOUSLY. CHOOSE THEM FOR BESPOKE B2B FORWARDS!",
+          date: "2026-05-24",
+          verified: true
+        }
+      ];
+
+      // Local references
+      let reviews = [];
+      let currentReviewRating = 5;
+
+      // 2. Initial Setup boot loader sequence
+      window.addEventListener("DOMContentLoaded", () => {
+        // Init Lucide
+        lucide.createIcons();
+
+        // Canvas Particles Background Start
+        initParticlesBackground();
+
+        // Asteroid Loading Engine
+        initAsteroidLoadingCanvas();
+
+        // Load persisted reviews
+        loadPersistedStateAndSeed();
+
+        // Telemetry Clock Ticking
+        startTelemetryClock();
+
+        // Boot loader bar simulation
+        animateLoader();
+
+        // Initialize SUJO Agent dialogue
+        renderAgentDialogue();
+
+        // ==========================================
+        // BUTTERY SMOOTH CUSTOM CYBER CURSOR LOGIC
+        // ==========================================
+        const dot = document.getElementById("custom-cursor-dot");
+        const ring = document.getElementById("custom-cursor-ring");
+        
+        if (dot && ring) {
+          let mouseX = -100;
+          let mouseY = -100;
+          let currentDotX = -100;
+          let currentDotY = -100;
+          let currentRingX = -100;
+          let currentRingY = -100;
+          let hasMovedYet = false;
+
+          window.addEventListener("mousemove", (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            if (!hasMovedYet) {
+              currentDotX = mouseX;
+              currentDotY = mouseY;
+              currentRingX = mouseX;
+              currentRingY = mouseY;
+              hasMovedYet = true;
+            }
+          });
+
+          // Smooth coordinate interpolation loop
+          function updateCursorCoordinates() {
+            if (hasMovedYet) {
+              currentDotX += (mouseX - currentDotX) * 0.22;
+              currentDotY += (mouseY - currentDotY) * 0.22;
+              currentRingX += (mouseX - currentRingX) * 0.11;
+              currentRingY += (mouseY - currentRingY) * 0.11;
+
+              dot.style.transform = `translate3d(${currentDotX}px, ${currentDotY}px, 0) translate(-50%, -50%)`;
+              ring.style.transform = `translate3d(${currentRingX}px, ${currentRingY}px, 0) translate(-50%, -50%)`;
+            }
+            requestAnimationFrame(updateCursorCoordinates);
+          }
+          requestAnimationFrame(updateCursorCoordinates);
+
+          // Add interactive hover listener expansion mechanics
+          function attachInteractiveCursorEffects() {
+            const interactives = document.querySelectorAll("a, button, select, input, textarea, [onclick], [role='button'], label, .review-star-btn");
+            interactives.forEach((el) => {
+              // Avoid duplicate attaching
+              if (el.dataset.cursorBound) return;
+              el.dataset.cursorBound = "true";
+
+              el.addEventListener("mouseenter", () => {
+                ring.style.width = "46px";
+                ring.style.height = "46px";
+                ring.style.borderColor = "#00f0ff";
+                ring.style.backgroundColor = "rgba(0, 163, 255, 0.08)";
+                ring.style.boxShadow = "0 0 20px rgba(0, 240, 255, 0.5)";
+                dot.style.width = "12px";
+                dot.style.height = "12px";
+                dot.style.backgroundColor = "#00f0ff";
+              });
+
+              el.addEventListener("mouseleave", () => {
+                ring.style.width = "28px";
+                ring.style.height = "28px";
+                ring.style.borderColor = "#00A3FF";
+                ring.style.backgroundColor = "transparent";
+                ring.style.boxShadow = "0 0 10px rgba(0, 163, 255, 0.3)";
+                dot.style.width = "8px";
+                dot.style.height = "8px";
+                dot.style.backgroundColor = "#00A3FF";
+              });
+            });
+          }
+
+          attachInteractiveCursorEffects();
+          
+          // Re-attach target callbacks upon runtime dynamically rendered list nodes (such as review submission clicks)
+          setInterval(attachInteractiveCursorEffects, 1000);
+
+          // Physically scale outer ring on click
+          window.addEventListener("mousedown", () => {
+            ring.style.width = "18px";
+            ring.style.height = "18px";
+            setTimeout(() => {
+              ring.style.width = "28px";
+              ring.style.height = "28px";
+            }, 120);
+          });
+        }
+      });
+
+      // 1b. HIGH-FIDELITY WEB AUDIO SYNTHESIS & SEQUENCING (COGNITIVE AUDIO FOUNDRY)
+      let isSystemLaunched = false;
+      let globalAudioCtx = null;
+
+      function playStartupAudio() {
+        try {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return;
+          const ctx = new AudioContextClass();
+          globalAudioCtx = ctx;
+
+          // 1. Cyber turbine charging sound effect sweep
+          const chargerOsc = ctx.createOscillator();
+          const chargerGain = ctx.createGain();
+          chargerOsc.type = "sine";
+          chargerOsc.frequency.setValueAtTime(60, ctx.currentTime);
+          chargerOsc.frequency.exponentialRampToValueAtTime(1400, ctx.currentTime + 1.25);
+          
+          chargerGain.gain.setValueAtTime(0, ctx.currentTime);
+          chargerGain.gain.linearRampToValueAtTime(0.08, ctx.currentTime + 0.3);
+          chargerGain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.3);
+          
+          chargerOsc.connect(chargerGain);
+          chargerGain.connect(ctx.destination);
+          chargerOsc.start();
+          chargerOsc.stop(ctx.currentTime + 1.35);
+
+          // 2. High-Tech Pentatonic Chime Chord Progression
+          const noteSchedule = [
+            { timeOffset: 0.65, freq: 261.63, duration: 2.0 }, // C4
+            { timeOffset: 0.80, freq: 329.63, duration: 2.0 }, // E4
+            { timeOffset: 0.95, freq: 392.00, duration: 2.2 }, // G4
+            { timeOffset: 1.10, freq: 523.25, duration: 2.5 }, // C5
+            { timeOffset: 1.25, freq: 659.25, duration: 3.0 }, // E5
+            { timeOffset: 1.40, freq: 1046.50, duration: 3.5 } // C6 (Absolute peak ring)
+          ];
+
+          noteSchedule.forEach(note => {
+            const osc = ctx.createOscillator();
+            const gainNode = ctx.createGain();
+            const filterNode = ctx.createBiquadFilter();
+
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(note.freq, ctx.currentTime + note.timeOffset);
+            osc.detune.setValueAtTime(Math.random() * 6 - 3, ctx.currentTime + note.timeOffset);
+
+            filterNode.type = "lowpass";
+            filterNode.frequency.setValueAtTime(1800, ctx.currentTime + note.timeOffset);
+            
+            gainNode.gain.setValueAtTime(0, ctx.currentTime);
+            gainNode.gain.setValueAtTime(0, ctx.currentTime + note.timeOffset);
+            gainNode.gain.linearRampToValueAtTime(0.065, ctx.currentTime + note.timeOffset + 0.05);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + note.timeOffset + note.duration);
+
+            osc.connect(filterNode);
+            filterNode.connect(gainNode);
+            gainNode.connect(ctx.destination);
+
+            osc.start(ctx.currentTime + note.timeOffset);
+            osc.stop(ctx.currentTime + note.timeOffset + note.duration + 0.1);
+          });
+
+          // 3. Sub bass rumbling feel
+          const subOsc = ctx.createOscillator();
+          const subGain = ctx.createGain();
+          const subFilter = ctx.createBiquadFilter();
+
+          subOsc.type = "sawtooth";
+          subOsc.frequency.setValueAtTime(55.00, ctx.currentTime + 0.65); // A1 sub harmonic
+          subOsc.frequency.linearRampToValueAtTime(65.41, ctx.currentTime + 1.6); // C2
+
+          subFilter.type = "lowpass";
+          subFilter.frequency.setValueAtTime(105, ctx.currentTime);
+
+          subGain.gain.setValueAtTime(0, ctx.currentTime);
+          subGain.gain.setValueAtTime(0, ctx.currentTime + 0.65);
+          subGain.gain.linearRampToValueAtTime(0.05, ctx.currentTime + 0.85);
+          subGain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 2.4);
+
+          subOsc.connect(subFilter);
+          subFilter.connect(subGain);
+          subGain.connect(ctx.destination);
+
+          subOsc.start(ctx.currentTime + 0.65);
+          subOsc.stop(ctx.currentTime + 2.5);
+
+        } catch (e) {
+          console.warn("Auditory engine initialized with warnings:", e);
+        }
+      }
+
+      function playChirp(type) {
+        try {
+          const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+          if (!AudioContextClass) return;
+          const ctx = new AudioContextClass();
+
+          if (type === 'click') {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.type = "sine";
+            osc.frequency.setValueAtTime(850, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(180, ctx.currentTime + 0.08);
+
+            gain.gain.setValueAtTime(0.06, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.08);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.1);
+          } else if (type === 'add_to_cart') {
+            const osc1 = ctx.createOscillator();
+            const osc2 = ctx.createOscillator();
+            const gain = ctx.createGain();
+
+            osc1.type = "sine";
+            osc1.frequency.setValueAtTime(523.25, ctx.currentTime); // C5
+            osc1.frequency.setValueAtTime(659.25, ctx.currentTime + 0.07); // E5
+            osc1.frequency.setValueAtTime(783.99, ctx.currentTime + 0.14); // G5
+
+            osc2.type = "triangle";
+            osc2.frequency.setValueAtTime(1046.50, ctx.currentTime); // C6
+            osc2.frequency.setValueAtTime(1318.51, ctx.currentTime + 0.07); // E6
+
+            gain.gain.setValueAtTime(0.08, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 0.35);
+
+            osc1.connect(gain);
+            osc2.connect(gain);
+            gain.connect(ctx.destination);
+
+            osc1.start();
+            osc2.start();
+            osc1.stop(ctx.currentTime + 0.4);
+            osc2.stop(ctx.currentTime + 0.4);
+          } else if (type === 'success') {
+            // Success sweeping major chord pings
+            const freqs = [329.63, 392.00, 523.25, 659.25, 1046.50]; // E4, G4, C5, E5, C6
+            freqs.forEach((freq, i) => {
+              const osc = ctx.createOscillator();
+              const gain = ctx.createGain();
+              osc.type = "sine";
+              osc.frequency.setValueAtTime(freq, ctx.currentTime + i * 0.04);
+              
+              gain.gain.setValueAtTime(0, ctx.currentTime);
+              gain.gain.setValueAtTime(0, ctx.currentTime + i * 0.04);
+              gain.gain.linearRampToValueAtTime(0.04, ctx.currentTime + i * 0.04 + 0.02);
+              gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + i * 0.04 + 0.35);
+
+              osc.connect(gain);
+              gain.connect(ctx.destination);
+              osc.start(ctx.currentTime + i * 0.04);
+              osc.stop(ctx.currentTime + i * 0.04 + 0.4);
+            });
+          } else if (type === 'notify') {
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.frequency.setValueAtTime(980, ctx.currentTime);
+            gain.gain.setValueAtTime(0.025, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + 0.12);
+
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 0.15);
+          }
+        } catch (e) {
+          // Fall back silently
+        }
+      }
+
+      // Live Launch Engine (Triggered after security gesture click)
+      function triggerCyberLaunch() {
+        if (isSystemLaunched) return;
+        isSystemLaunched = true;
+
+        // 1. Immediately trigger high-fidelity asteroid explosion physics!
+        if (window.explodeAsteroid) {
+          window.explodeAsteroid();
+        }
+
+        // Play high fidelity synthesizer launch melody
+        playStartupAudio();
+
+        const loader = document.getElementById("loading-screen");
+
+        // Flash screen white-cyan overlay for high fidelity transition feedback
+        // Triggered exactly at 350ms (the point of peak debris velocity expansion!)
+        setTimeout(() => {
+          const flashOverlay = document.createElement("div");
+          flashOverlay.className = "fixed inset-0 bg-[#00f0ff] z-[10000] opacity-95 pointer-events-none transition-opacity duration-1000 ease-out";
+          document.body.appendChild(flashOverlay);
+
+          setTimeout(() => {
+            flashOverlay.style.opacity = "0";
+            setTimeout(() => flashOverlay.remove(), 1200);
+          }, 100);
+        }, 350);
+
+        // Zoom & fade out loader screen
+        if (loader) {
+          setTimeout(() => {
+            loader.classList.add("scale-[1.06]", "opacity-0", "blur-[6px]");
+            loader.style.transition = "all 1.1s cubic-bezier(0.16, 1, 0.3, 1)";
+            setTimeout(() => {
+              loader.classList.add("hidden");
+            }, 1200);
+          }, 650); // Delay revealed website slightly to allow maximum aesthetic shard coverage!
+        }
+
+        // Trigger staggered slide-ins
+        const hc = document.getElementById("hero-copy-pack");
+        const hh = document.getElementById("hero-hologram-pack");
+        const header = document.querySelector("header");
+
+        setTimeout(() => {
+          if (hc) {
+            hc.classList.remove("opacity-0", "translate-y-12");
+            hc.classList.add("opacity-100", "translate-y-0");
+          }
+          if (hh) {
+            hh.classList.remove("opacity-0", "scale-95");
+            hh.classList.add("opacity-100", "scale-100");
+          }
+          if (header) {
+            header.classList.add("glass", "backdrop-blur-xl");
+            header.classList.remove("-translate-y-10", "opacity-0");
+            header.classList.add("translate-y-0", "opacity-100");
+            header.style.transition = "all 1.1s cubic-bezier(0.16, 1, 0.3, 1)";
+          }
+        }, 120);
+
+        // Notify user direct
+        showToast("SECURE MAIN-GRID COGNITIVE ENVIRONMENT: ONLINE", "success");
+      }
+
+      // Loading screen simulation
+      function animateLoader() {
+        const progress = document.getElementById("progress-indicator");
+        const statusText = document.getElementById("loading-status");
+        const pctText = document.getElementById("loading-pct");
+        const progressArea = document.getElementById("loader-progress-area");
+        const launchArea = document.getElementById("loader-launch-area");
+        const subheading = document.getElementById("loader-subheading");
+
+        const phases = [
+          { pct: 15, msg: "VERIFYING USER AUTHORIZATION..." },
+          { pct: 35, msg: "BOOTING PARTICLE NEURAL GRIDS..." },
+          { pct: 60, msg: "PULLING INVENTORY CORE SCHEMATICS..." },
+          { pct: 85, msg: "CONFIGURING SECURE CRYPTO SHELLS..." },
+          { pct: 100, msg: "SYSTEM INTEGRAL COMPLETE. READY." }
+        ];
+
+        let currentPct = 0;
+
+        const interval = setInterval(() => {
+          if (currentPct < 100) {
+            currentPct += Math.floor(Math.random() * 4) + 3;
+            if (currentPct > 100) currentPct = 100;
+            
+            if (progress) progress.style.width = currentPct + "%";
+            if (pctText) pctText.innerText = currentPct + "%";
+
+            // Update human phase indicators
+            const applicablePhase = phases.find(p => currentPct <= p.pct) || phases[phases.length - 1];
+            if (statusText) statusText.innerText = applicablePhase.msg;
+          } else {
+            clearInterval(interval);
+            
+            // Subtle notify chirp confirming telemetry 100% full
+            playChirp('notify');
+
+            // Hide loading progress bar with ease
+            if (progressArea) {
+              progressArea.classList.add("opacity-0", "pointer-events-none");
+              setTimeout(() => {
+                progressArea.classList.add("hidden");
+                
+                // Set subheading to ask for enter action
+                if (subheading) {
+                  subheading.innerText = "COGNITIVE CORES READY // GESTURE REQUIRED";
+                  subheading.className = "font-mono text-xs text-green-400 mt-2 tracking-widest uppercase animate-pulse";
+                }
+
+                // Show launch control buttons with fade & scale-in mechanics
+                if (launchArea) {
+                  launchArea.classList.remove("hidden");
+                  // Trigger layout paint cycle, then add visible styles
+                  setTimeout(() => {
+                    launchArea.classList.remove("opacity-0", "scale-95");
+                    launchArea.classList.add("opacity-100", "scale-100");
+                  }, 50);
+                }
+              }, 400);
+            }
+          }
+        }, 50);
+      }
+
+      // 3. SECURE LOCAL STORAGE ENGINE DB INJECTOR
+      function loadPersistedStateAndSeed() {
+        // Reviews check
+        const storedReviews = localStorage.getItem("sujo_reviews_db");
+        if (!storedReviews) {
+          localStorage.setItem("sujo_reviews_db", JSON.stringify(defaultReviews));
+          reviews = [...defaultReviews];
+        } else {
+          try {
+            reviews = JSON.parse(storedReviews);
+          } catch(e) {
+            reviews = [...defaultReviews];
+          }
+        }
+
+        renderReviews();
+      }
+
+      // 3c. ASTEROID EXPLOSION PHYSICS ENGINE (LOADING GRAPHICS FRAMEWORK)
+      let isAsteroidExploding = false;
+
+      function initAsteroidLoadingCanvas() {
+        const canvas = document.getElementById("asteroid-loading-canvas");
+        if (!canvas) return;
+        const ctx = canvas.getContext("2d");
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const radius = 42;
+        
+        let angle = 0;
+        let cracksOffset = 0;
+        
+        // Rocky jagged contour generator
+        const rockyPoints = [];
+        const numPoints = 14;
+        for (let i = 0; i < numPoints; i++) {
+          const theta = (i / numPoints) * Math.PI * 2;
+          const r = radius + (Math.sin(theta * 3) * 6) + (Math.cos(theta * 5) * 3);
+          rockyPoints.push({ theta, r });
+        }
+
+        // Orbit ring micro debris orbiting our central planetary fragment
+        const ringParticles = [];
+        for (let i = 0; i < 20; i++) {
+          ringParticles.push({
+            angle: Math.random() * Math.PI * 2,
+            distance: 60 + Math.random() * 30,
+            size: Math.random() * 2 + 0.8,
+            speed: (Math.random() * 0.012 + 0.004) * (Math.random() > 0.5 ? 1 : -1),
+            color: Math.random() > 0.5 ? '#00f0ff' : '#0055ff'
+          });
+        }
+
+        // Explosion physics array
+        let explosionArray = [];
+
+        window.explodeAsteroid = function() {
+          isAsteroidExploding = true;
+          playExplosionSynth();
+
+          const particleCount = 120;
+          for (let i = 0; i < particleCount; i++) {
+            const shardTheta = Math.random() * Math.PI * 2;
+            const shardSpeed = Math.random() * 14 + 7; // Extremely fast expansion speeds!
+            explosionArray.push({
+              x: centerX,
+              y: centerY,
+              vx: Math.cos(shardTheta) * shardSpeed,
+              vy: Math.sin(shardTheta) * shardSpeed,
+              size: Math.random() * 6 + 1.5,
+              color: i % 4 === 0 ? '#00f0ff' : (i % 4 === 1 ? '#0055ff' : (i % 4 === 2 ? '#ffffff' : '#f43f5e')),
+              alpha: 1.0,
+              decay: Math.random() * 0.015 + 0.012, // fade speeds
+              spin: Math.random() * 0.3 - 0.15,
+              angle: Math.random() * Math.PI * 2,
+              history: []
+            });
+          }
+        };
+
+        function playExplosionSynth() {
+          try {
+            const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+            if (!AudioContextClass) return;
+            const ctx = new AudioContextClass();
+            
+            // Sub-bass heavy seismic wave
+            const osc = ctx.createOscillator();
+            const gain = ctx.createGain();
+            osc.frequency.setValueAtTime(120, ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(15, ctx.currentTime + 1.25);
+            
+            gain.gain.setValueAtTime(0.08, ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + 1.2);
+            
+            osc.connect(gain);
+            gain.connect(ctx.destination);
+            osc.start();
+            osc.stop(ctx.currentTime + 1.25);
+          } catch(e) {}
+        }
+
+        function drawAsteroidLoop() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          if (!isAsteroidExploding) {
+            angle += 0.005;
+            cracksOffset = Math.sin(Date.now() * 0.002) * 1.5;
+
+            // 1. Core glowing solar or thermal aura
+            const leadGrad = ctx.createRadialGradient(centerX, centerY, radius * 0.2, centerX, centerY, radius * 1.6);
+            leadGrad.addColorStop(0, "rgba(0, 85, 255, 0.24)");
+            leadGrad.addColorStop(0.6, "rgba(0, 240, 255, 0.06)");
+            leadGrad.addColorStop(1, "rgba(0, 0, 0, 0)");
+            ctx.fillStyle = leadGrad;
+            ctx.beginPath();
+            ctx.arc(centerX, centerY, radius * 1.8, 0, Math.PI * 2);
+            ctx.fill();
+
+            // 2. Draw outer ambient rings orbiters
+            ringParticles.forEach(p => {
+              p.angle += p.speed;
+              const oX = centerX + Math.cos(p.angle) * p.distance;
+              const oY = centerY + Math.sin(p.angle) * p.distance * 0.42; // slanted isometric ellipse
+              
+              ctx.fillStyle = p.color;
+              ctx.globalAlpha = 0.8;
+              ctx.beginPath();
+              ctx.arc(oX, oY, p.size, 0, Math.PI * 2);
+              ctx.fill();
+            });
+            ctx.globalAlpha = 1.0;
+
+            // 3. Draw Asteroid Solid Core
+            ctx.save();
+            ctx.translate(centerX, centerY);
+            ctx.rotate(angle);
+            
+            ctx.fillStyle = "#090615"; 
+            ctx.strokeStyle = "#00f0ff"; 
+            ctx.lineWidth = 2.0;
+            ctx.shadowColor = "#00f0ff";
+            ctx.shadowBlur = 12;
+
+            ctx.beginPath();
+            rockyPoints.forEach((pt, ind) => {
+              const x = Math.cos(pt.theta) * pt.r;
+              const y = Math.sin(pt.theta) * pt.r;
+              if (ind === 0) ctx.moveTo(x, y);
+              else ctx.lineTo(x, y);
+            });
+            ctx.closePath();
+            ctx.fill();
+            ctx.stroke();
+            ctx.shadowBlur = 0; // reset shadow
+
+            // 4. Detail deep thermal craters
+            ctx.fillStyle = "#030208";
+            ctx.strokeStyle = "rgba(0, 163, 255, 0.35)";
+            ctx.lineWidth = 1.0;
+            
+            const craters = [
+              { cx: -13, cy: -12, r: 7 },
+              { cx: 14, cy: 12, r: 5.5 },
+              { cx: -4, cy: 16, r: 4.5 },
+              { cx: 16, cy: -10, r: 6.5 }
+            ];
+
+            craters.forEach(c => {
+              ctx.beginPath();
+              ctx.arc(c.cx, c.cy, c.r, 0, Math.PI * 2);
+              ctx.fill();
+              ctx.stroke();
+            });
+
+            // 5. Lava/Neon glowing core tectonic lines
+            ctx.strokeStyle = "#00f0ff";
+            ctx.lineWidth = 1.8;
+            ctx.beginPath();
+            ctx.moveTo(-radius * 0.4, 0);
+            ctx.lineTo(0, -radius * 0.15 + cracksOffset);
+            ctx.lineTo(radius * 0.4, radius * 0.1);
+            ctx.stroke();
+
+            ctx.strokeStyle = "#7a00ff";
+            ctx.beginPath();
+            ctx.moveTo(0, radius * 0.3);
+            ctx.lineTo(radius * 0.2, -radius * 0.25);
+            ctx.stroke();
+
+            ctx.restore();
+          } else {
+            // EXPLOSION PHYSICS LOOP
+            explosionArray.forEach(p => {
+              if (p.alpha <= 0) return;
+              
+              // Physics movement
+              p.x += p.vx;
+              p.y += p.vy;
+              p.vx *= 0.96; // air-resistance dampening style
+              p.vy *= 0.96;
+              p.angle += p.spin;
+              p.alpha -= p.decay;
+
+              // Append trail logs
+              p.history.push({ x: p.x, y: p.y });
+              if (p.history.length > 6) p.history.shift();
+
+              // Draw gorgeous beam tracers
+              if (p.history.length > 1) {
+                ctx.beginPath();
+                ctx.moveTo(p.history[0].x, p.history[0].y);
+                for (let j = 1; j < p.history.length; j++) {
+                  ctx.lineTo(p.history[j].x, p.history[j].y);
+                }
+                ctx.strokeStyle = p.color;
+                ctx.globalAlpha = p.alpha * 0.38;
+                ctx.lineWidth = p.size * 0.85;
+                ctx.stroke();
+              }
+
+              // Draw angular flying polygon shard
+              ctx.save();
+              ctx.translate(p.x, p.y);
+              ctx.rotate(p.angle);
+              ctx.fillStyle = p.color;
+              ctx.globalAlpha = p.alpha;
+              ctx.shadowColor = p.color;
+              ctx.shadowBlur = p.alpha * 15;
+
+              ctx.beginPath();
+              ctx.moveTo(0, -p.size);
+              ctx.lineTo(p.size * 0.85, p.size * 0.4);
+              ctx.lineTo(-p.size * 0.85, p.size * 0.4);
+              ctx.closePath();
+              ctx.fill();
+              ctx.restore();
+            });
+            ctx.globalAlpha = 1.0;
+            ctx.shadowBlur = 0;
+          }
+
+          requestAnimationFrame(drawAsteroidLoop);
+        }
+
+        requestAnimationFrame(drawAsteroidLoop);
+      }
+
+      // 4. HERO BACKDROP PARTICLE WORLD CONSTS
+      function initParticlesBackground() {
+        const canvas = document.getElementById("particles-canvas");
+        const ctx = canvas.getContext("2d");
+        let particlesArray = [];
+
+        function resizeCanvas() {
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+        }
+        window.addEventListener("resize", resizeCanvas);
+        resizeCanvas();
+
+        class Particle {
+          constructor() {
+            this.x = Math.random() * canvas.width;
+            this.y = Math.random() * canvas.height;
+            this.size = Math.random() * 2 + 1;
+            this.speedX = (Math.random() - 0.5) * 0.45;
+            this.speedY = (Math.random() - 0.5) * 0.45;
+            this.glowing = Math.random() > 0.7;
+          }
+          update() {
+            this.x += this.speedX;
+            this.y += this.speedY;
+
+            // boundary correction
+            if (this.x > canvas.width) this.x = 0;
+            if (this.x < 0) this.x = canvas.width;
+            if (this.y > canvas.height) this.y = 0;
+            if (this.y < 0) this.y = canvas.height;
+          }
+          draw() {
+            ctx.fillStyle = this.glowing ? "#00A3FF" : "rgba(0, 163, 255, 0.4)";
+            ctx.shadowBlur = this.glowing ? 6 : 0;
+            ctx.shadowColor = "#00A3FF";
+            ctx.beginPath();
+            ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+            ctx.closePath();
+            ctx.fill();
+            ctx.shadowBlur = 0; // reset
+          }
+        }
+
+        function createParticles() {
+          const maxParticles = Math.min(65, Math.floor((canvas.width * canvas.height) / 25000));
+          for (let i = 0; i < maxParticles; i++) {
+            particlesArray.push(new Particle());
+          }
+        }
+        createParticles();
+
+        function handleConnections() {
+          let distanceLimit = 120;
+          for (let i = 0; i < particlesArray.length; i++) {
+            for (let j = i; j < particlesArray.length; j++) {
+              let dx = particlesArray[i].x - particlesArray[j].x;
+              let dy = particlesArray[i].y - particlesArray[j].y;
+              let distance = Math.sqrt(dx * dx + dy * dy);
+
+              if (distance < distanceLimit) {
+                // connection lines opacity based on proximity
+                let alpha = (1 - (distance / distanceLimit)) * 0.16;
+                ctx.strokeStyle = `rgba(0, 240, 255, ${alpha})`;
+                ctx.lineWidth = 0.5;
+                ctx.beginPath();
+                ctx.moveTo(particlesArray[i].x, particlesArray[i].y);
+                ctx.lineTo(particlesArray[j].x, particlesArray[j].y);
+                ctx.stroke();
+              }
+            }
+          }
+        }
+
+        function animate() {
+          ctx.clearRect(0, 0, canvas.width, canvas.height);
+          
+          for (let i = 0; i < particlesArray.length; i++) {
+            particlesArray[i].update();
+            particlesArray[i].draw();
+          }
+
+          handleConnections();
+          requestAnimationFrame(animate);
+        }
+        animate();
+      }
+
+
+
+      // 5b. REVIEWS UTILITIES & DYNAMIC RENDERING SYSTEM
+      function renderReviews() {
+        const container = document.getElementById("reviews-grid-container");
+        if (!container) return;
+        container.innerHTML = "";
+
+        // Update counter text
+        const counterEl = document.getElementById("active-review-counter");
+        if (counterEl) {
+          counterEl.innerText = `${reviews.length} ACTIVE METRICS`;
+        }
+
+        reviews.forEach(rev => {
+          // Generate stars html string
+          let starsHtml = "";
+          for (let i = 1; i <= 5; i++) {
+            if (i <= rev.rating) {
+              starsHtml += `<i data-lucide="star" class="w-3.5 h-3.5 fill-current text-yellow-400"></i>`;
+            } else {
+              starsHtml += `<i data-lucide="star" class="w-3.5 h-3.5 text-gray-700"></i>`;
+            }
+          }
+
+          const cardHtml = `
+            <div class="glass glass-cyan-border rounded-xl p-6 space-y-4 relative group hover:scale-[1.01] hover:shadow-neon-cyan/10 transition-all duration-300">
+              <!-- Glow detail overlay -->
+              <div class="absolute inset-0 bg-gradient-to-br from-cyber-blue/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity rounded-xl pointer-events-none"></div>
+              
+              <div class="flex items-center justify-between relative z-10">
+                <!-- Stars -->
+                <div class="flex items-center gap-0.5">
+                  ${starsHtml}
+                </div>
+                <!-- Badge -->
+                <span class="font-mono text-[8px] border border-[#00f0ff]/30 text-[#00f0ff] uppercase bg-[#00f0ff]/5 px-2 py-0.5 rounded-full tracking-widest">
+                  VERIFIED HZ
+                </span>
+              </div>
+
+              <p class="font-poppins text-xs text-gray-300 font-light leading-relaxed italic relative z-10">
+                "${rev.text}"
+              </p>
+
+              <div class="flex items-center justify-between border-t border-white/5 pt-3.5 font-mono text-[10px] text-gray-500 relative z-10">
+                <span class="text-white font-bold tracking-wider">${rev.name}</span>
+                <span>${rev.date}</span>
+              </div>
+            </div>
+          `;
+          container.insertAdjacentHTML("beforeend", cardHtml);
+        });
+
+        // invoke lucide
+        if (window.lucide) {
+          lucide.createIcons();
+        }
+      }
+
+      function setReviewRating(number) {
+        currentReviewRating = number;
+        document.getElementById("review-rating-value").value = number;
+        
+        // Update selection UI visually
+        for (let i = 1; i <= 5; i++) {
+          const btn = document.querySelector(`.star-select-btn[data-star="${i}"]`);
+          if (btn) {
+            if (i <= number) {
+              btn.className = "text-yellow-400 hover:scale-115 transition-transform duration-200 cursor-pointer star-select-btn";
+              btn.innerHTML = `<i data-lucide="star" class="w-6 h-6 fill-current stroke-current"></i>`;
+            } else {
+              btn.className = "text-gray-650 hover:scale-115 transition-transform duration-200 cursor-pointer star-select-btn";
+              btn.innerHTML = `<i data-lucide="star" class="w-6 h-6 fill-transparent stroke-current"></i>`;
+            }
+          }
+        }
+        if (window.lucide) lucide.createIcons();
+      }
+
+      function highlightStars(number) {
+        // highlight on mouse hover
+        for (let i = 1; i <= 5; i++) {
+          const btn = document.querySelector(`.star-select-btn[data-star="${i}"]`);
+          if (btn) {
+            if (i <= number) {
+              btn.classList.add("text-yellow-300");
+              btn.classList.remove("text-gray-650", "text-gray-600");
+            } else {
+              btn.classList.remove("text-yellow-300", "text-yellow-400");
+              btn.classList.add("text-gray-655");
+            }
+          }
+        }
+      }
+
+      function resetStarsHighlight() {
+        // restore stars based on current set rating
+        setReviewRating(currentReviewRating);
+      }
+
+      function handleReviewSubmission(e) {
+        e.preventDefault();
+
+        // Play positive sound when submitting review
+        playChirp('success');
+
+        const nameEl = document.getElementById("review-name");
+        const textEl = document.getElementById("review-text");
+        
+        if (!nameEl || !textEl) return;
+
+        const dateObj = new Date();
+        const yyyy = dateObj.getFullYear();
+        const mm = String(dateObj.getMonth() + 1).padStart(2, '0');
+        const dd = String(dateObj.getDate()).padStart(2, '0');
+        const formattedDate = `${yyyy}-${mm}-${dd}`;
+
+        const newReview = {
+          id: "rev-" + Date.now(),
+          name: nameEl.value.trim().toUpperCase(),
+          rating: parseInt(document.getElementById("review-rating-value").value) || 5,
+          text: textEl.value.trim().toUpperCase(),
+          date: formattedDate,
+          verified: true
+        };
+
+        // Prepend new review card
+        reviews.unshift(newReview);
+        localStorage.setItem("sujo_reviews_db", JSON.stringify(reviews));
+
+        // Reset Form elements only (retain rating choice but set to 5 by default)
+        nameEl.value = "";
+        textEl.value = "";
+        setReviewRating(5);
+
+        renderReviews();
+        showToast("RESONANCE BROADCAST RECORDED & SYNCED // LOGGED TO MATRIX", "success");
+      }
+
+      // 5c. SUJO COGNITIVE AGENT INTERACTIVES (SYS CORE)
+      let agentConversation = [
+        {
+          sender: "agent",
+          text: "COGNITIVE SYNAPSE ESTABLISHED // ONLINE // I am the SUJO Agent, your direct neural interface to the SUJO INDIAN database. How may I assist your cybernetic inventory lookup today?",
+          time: "14:00:22"
+        }
+      ];
+
+      function renderAgentDialogue() {
+        const container = document.getElementById("sujo-agent-chat-viewport");
+        if (!container) return;
+        container.innerHTML = "";
+
+        agentConversation.forEach(msg => {
+          const isAgent = msg.sender === "agent";
+          const alignClass = isAgent ? "justify-start" : "justify-end";
+          const bgClass = isAgent 
+            ? "bg-white/5 border border-white/5 text-gray-200" 
+            : "bg-cyber-blue/15 border border-[#00A3FF]/30 text-white ml-auto";
+          
+          const iconHtml = isAgent 
+            ? `<div class="w-8 h-8 rounded-full bg-cyber-blue/10 border border-cyber-accent/40 flex items-center justify-center text-cyber-accent shrink-0 select-none">
+                 <i data-lucide="bot" class="w-4 h-4"></i>
+               </div>`
+            : `<div class="w-8 h-8 rounded-full bg-cyber-violet/10 border border-[#7a00ff]/40 flex items-center justify-center text-cyber-violet shrink-0 select-none">
+                 <i data-lucide="user" class="w-4 h-4"></i>
+               </div>`;
+
+          const bubbleHtml = `
+            <div class="flex items-start gap-3 max-w-[85%] ${alignClass}">
+              ${isAgent ? iconHtml : ""}
+              <div class="p-3.5 rounded-xl text-xs leading-relaxed space-y-1 relative group ${bgClass}">
+                ${isAgent ? `
+                  <div class="flex items-baseline gap-2 mb-1 border-b border-white/5 pb-1 select-none">
+                    <span class="font-signature text-[22px] text-cyber-accent font-normal leading-none capitalize">SUJO Agent</span>
+                    <span class="font-mono text-[7px] text-gray-500 uppercase tracking-widest px-1 border border-white/5 bg-white/5 rounded-full">SYSTEM PROXY</span>
+                  </div>
+                ` : `
+                  <div class="flex items-baseline justify-end gap-2 mb-1 border-b border-[#00f0ff]/10 pb-1 select-none">
+                    <span class="font-mono text-[8px] text-[#00f0ff] uppercase tracking-widest">TRANSMITTER</span>
+                  </div>
+                `}
+                <div class="${isAgent ? 'font-poppins' : 'font-mono text-[11px]'} leading-relaxed break-words">${msg.text}</div>
+                <div class="text-[7px] font-mono select-none text-gray-600 block text-right pt-1">${msg.time}</div>
+              </div>
+              ${!isAgent ? iconHtml : ""}
+            </div>
+          `;
+          container.insertAdjacentHTML("beforeend", bubbleHtml);
+        });
+
+        // Autoscroll Down smoothly
+        container.scrollTop = container.scrollHeight;
+
+        if (window.lucide) {
+          lucide.createIcons();
+        }
+      }
+
+      function injectPresetAgentQuery(qText) {
+        const inputEl = document.getElementById("sujo-agent-input");
+        if (inputEl) {
+          inputEl.value = qText;
+          performAgentChatSubmission();
+        }
+      }
+
+      function catchAgentEnter(e) {
+        if (e.key === "Enter") {
+          performAgentChatSubmission();
+        }
+      }
+
+      function clearAgentDialog() {
+        const timeNow = new Date().toTimeString().split(' ')[0];
+        agentConversation = [
+          {
+            sender: "agent",
+            text: "SYSTEM RESET COMPLETE // COGNITIVE LINKS RESTORED. Transmit your telemetry parameters or select guidelines below.",
+            time: timeNow
+          }
+        ];
+        renderAgentDialogue();
+        showToast("AI COGNITIVE BUFFER RESET SUCCESSFUL", "success");
+      }
+
+      function navigateBrowserTo(sectionId) {
+        const el = document.getElementById(sectionId);
+        if (el) {
+          el.scrollIntoView({ behavior: "smooth" });
+          showToast(`GRID NETWORK ROUTED TO #${sectionId.toUpperCase()}`, "info");
+        }
+      }
+
+      function performAgentChatSubmission() {
+        const inputEl = document.getElementById("sujo-agent-input");
+        if (!inputEl) return;
+        const queryText = inputEl.value.trim();
+        if (!queryText) return;
+
+        // Reset input element
+        inputEl.value = "";
+
+        const timeNow = new Date().toTimeString().split(' ')[0];
+
+        // Push User query
+        agentConversation.push({
+          sender: "user",
+          text: queryText,
+          time: timeNow
+        });
+        
+        // Add highly stylized typing loader entry to simulate active matrix processing
+        const loadingId = "sujo-typing-" + Date.now();
+        agentConversation.push({
+          sender: "agent",
+          text: `<span class="flex items-center gap-1.5 py-1 text-cyber-accent text-[11px] font-mono select-none">
+                   <span class="w-1.5 h-1.5 rounded-full bg-cyber-accent animate-bounce" style="animation-delay: 0s"></span>
+                   <span class="w-1.5 h-1.5 rounded-full bg-cyber-accent animate-bounce" style="animation-delay: 0.15s"></span>
+                   <span class="w-1.5 h-1.5 rounded-full bg-cyber-accent animate-bounce" style="animation-delay: 0.3s"></span>
+                   <span class="ml-1 tracking-widest uppercase animate-pulse">[ SECURE COGNITIVE LINK STREAMING... ]</span>
+                 </span>`,
+          time: timeNow,
+          isLoader: true
+        });
+
+        renderAgentDialogue();
+        showToast("TRANSMITTING COGNITIVE DATAPACK", "info");
+
+        // Attempt fetch to our robust local Gemini Express proxy!
+        fetch("/api/chat", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify({
+            message: queryText,
+            history: agentConversation.filter(m => !m.isLoader)
+          })
+        })
+        .then(res => {
+          if (!res.ok) throw new Error("Server core proxy offline");
+          return res.json();
+        })
+        .then(data => {
+          // Filter out the typing indicator template
+          agentConversation = agentConversation.filter(m => !m.isLoader);
+          
+          if (data && data.reply) {
+            agentConversation.push({
+              sender: "agent",
+              text: data.reply,
+              time: new Date().toTimeString().split(' ')[0]
+            });
+            renderAgentDialogue();
+          } else {
+            throw new Error("Missing response payload");
+          }
+        })
+        .catch(err => {
+          console.warn("Proxy connection error, switching to secure core offline parameters:", err);
+          
+          // Fall back gracefully to robust local keyword matching
+          setTimeout(() => {
+            agentConversation = agentConversation.filter(m => !m.isLoader);
+            
+            let phrase = queryText.toLowerCase();
+            let reply = "";
+
+            if (phrase.includes("spec") || phrase.includes("headphone") || phrase.includes("sound") || phrase.includes("audio")) {
+              reply = "The current audio flagship, <b class='text-cyber-accent'>SUJO NEON-V1 HEADPHONES</b> ($349), represents peak acoustic mapping. Engineered with 50mm Graphene Drivers, 48 hours is optimal charging, active glowing aura rings, and responsive virtual Comfort profile padding.";
+            } else if (phrase.includes("price") || phrase.includes("cost") || phrase.includes("catalog") || phrase.includes("item") || phrase.includes("list") || phrase.includes("buy")) {
+              reply = "SECURED INVENTORY RETRIEVED // CORE CATALOG MODULES:<br><br>" +
+                      "&raquo; <b>SUJO NEON-V1 HEADPHONES</b>: $349 (High fidelity Audio Resonance)<br>" +
+                      "&raquo; <b>SUJO CYBER-GRID MECHANICAL KEYBOARD</b>: $289 (Optical Mechanical Switch)<br>" +
+                      "&raquo; <b>SUJO HOLOGRAPH SMART TIME</b>: $699 (Titanium wear with holographic project)<br>" +
+                      "&raquo; <b>SUJO NEXUS ERGOUSE</b>: $189 (High efficiency lightweight carbon sensor mouse)<br><br>" +
+                      "Sync coupling inside our main GRID CATALOG menu above to mount them to the cart.";
+            } else if (phrase.includes("india") || phrase.includes("delhi") || phrase.includes("shipping") || phrase.includes("ship")) {
+              reply = "COURIER SYNC ENABLED // SUJO INDIAN ships secure duty-paid air cargo globally, including <b>India</b> (New Delhi, Mumbai, Kolkata, Karnataka and secure postal channels) with absolute end-to-end telemetry tracking tags. Customs metrics cleared at checkout.";
+            } else if (phrase.includes("coupon") || phrase.includes("discount") || phrase.includes("code") || phrase.includes("offer") || phrase.includes("promo")) {
+              reply = "SYSTEM CREDIT ACCESS INSTALLED // Apply exclusive browser promo code <b class='text-emerald-400 font-mono'>SUJO_OPERA_NEUTRAL</b> on checkout to claim an automatic <b>15% discount</b> off your active equipment order!";
+            } else if (phrase.includes("keyboard") || phrase.includes("key") || phrase.includes("peripheral")) {
+              reply = "The aerospace-grade <b class='text-cyber-accent'>SUJO CYBER-GRID MECHANICAL KEYBOARD</b> ($289) provides optical fast-actuating mechanical switch mechanisms, premium laser engraving, and fully customizable addressable light backplanes.";
+            } else if (phrase.includes("mouse") || phrase.includes("nexus")) {
+              reply = "The ultra-lightweight <b class='text-cyber-accent'>SUJO NEXUS ERGOUSE GAMING MOUSE</b> ($189) is constructed with high-efficiency raw carbon-fiber, offering 30,000 extreme DPI sensor units and frictionless glide dynamics.";
+            } else if (phrase.includes("watch") || phrase.includes("wearable") || phrase.includes("time")) {
+              reply = "The <b class='text-cyber-accent'>SUJO HOLOGRAPH SMART TIME SMART WATCH</b> ($699) features robust Grade-5 Titanium architecture, kinetic dual-sapphire lens, thermal charging cycles, and premium volumetric tactical hologram dial matrices.";
+            } else if (phrase.includes("hello") || phrase.includes("hi") || phrase.includes("hey") || phrase.includes("system")) {
+              reply = "AUTHENTICATION PROTOCOLS SECURED. Hello digital user. I am your SUJO Agent virtual proxy. Let me know your telemetry queries about catalog devices, shipping parameters, or exclusive discount parameters.";
+            } else if (phrase.includes("who") || phrase.includes("what") || phrase.includes("about") || phrase.includes("sujo")) {
+              reply = "<b>SUJO INDIAN</b> is an high-caliber futuristic gaming hardware brand built under the absolute mandate:<br>'ONE GOAL. ENDLESS OPPORTUNITIES.'<br>We merge architectural glass aesthetics with real cybernetic ergonomics and heavy performance.";
+            } else {
+              reply = "TRANSMISSION RECEIVED // Telemetry has been logged to matrix indexes. We confirm: <b>SUJO INDIAN</b> gears are fully synced for modern tactical headsets, standard home gaming peripherals, and premium international logistics. Ask for list catalogs or pricing models to inspect.";
+            }
+
+            agentConversation.push({
+              sender: "agent",
+              text: reply,
+              time: new Date().toTimeString().split(' ')[0]
+            });
+            renderAgentDialogue();
+          }, 650);
+        });
+      }
+
+
+
+      // 9. CYBER TOAST NOTIFICATION UTILS
+      function showToast(message, type = "info") {
+        const container = document.getElementById("toast-container");
+        const toastId = `toast-${Date.now()}`;
+        
+        let icon = "alert-circle";
+        let colorClasses = "border-cyber-blue text-white";
+        let activeAccent = "bg-cyber-blue";
+
+        if (type === "success") {
+          icon = "check-circle";
+          colorClasses = "border-[#10b981] text-white";
+          activeAccent = "bg-[#10b981]";
+        } else if (type === "info") {
+          icon = "info";
+          colorClasses = "border-[#00f0ff] text-white";
+          activeAccent = "bg-[#00f0ff]";
+        }
+
+        const toastHtml = `
+          <div id="${toastId}" class="glass pointer-events-auto border px-5 py-4 rounded-xl shadow-2xl flex items-start gap-3.5 transition-all duration-500 ease-out translate-x-20 opacity-0 ${colorClasses}" style="border-left-width: 4px;">
+            <div class="mt-0.5 text-cyber-accent">
+              <i data-lucide="${icon}" class="w-5 h-5"></i>
+            </div>
+            <div class="space-y-1">
+              <p class="font-mono text-[9px] uppercase tracking-widest text-[#00f0ff]">SUJO MAIN-GRID CONSOLE:</p>
+              <p class="font-poppins text-xs font-light leading-relaxed uppercase tracking-wider">${message}</p>
+            </div>
+          </div>
+        `;
+
+        container.insertAdjacentHTML("beforeend", toastHtml);
+        lucide.createIcons();
+
+        const toastEl = document.getElementById(toastId);
+        setTimeout(() => {
+          toastEl.classList.remove("translate-x-20", "opacity-0");
+        }, 30);
+
+        // Auto destroy after 4500ms
+        setTimeout(() => {
+          toastEl.classList.add("translate-x-20", "opacity-0");
+          setTimeout(() => {
+            toastEl.remove();
+          }, 500);
+        }, 4500);
+      }
+
+      // 10. TELEMETRY CLOCK
+      function startTelemetryClock() {
+        const timerEl = document.getElementById("telemetry-timer");
+        setInterval(() => {
+          const now = new Date();
+          const yr = now.getUTCFullYear();
+          const mo = String(now.getUTCMonth() + 1).padStart(2, '0');
+          const dy = String(now.getUTCDate()).padStart(2, '0');
+          const hr = String(now.getUTCHours()).padStart(2, '0');
+          const mi = String(now.getUTCMinutes()).padStart(2, '0');
+          const sc = String(now.getUTCSeconds()).padStart(2, '0');
+          
+          if(timerEl) {
+            timerEl.innerText = `UTC: ${yr}-${mo}-${dy} ${hr}:${mi}:${sc}`;
+          }
+        }, 1000);
+      }
+
+      // Hamburger logic
+      function toggleMobileMenu() {
+        const menu = document.getElementById("mobile-menu");
+        const icon = document.getElementById("mobile-menu-icon");
+        
+        const isHidden = menu.classList.contains("hidden");
+        
+        if (isHidden) {
+          menu.classList.remove("hidden");
+          icon.setAttribute("data-lucide", "x");
+        } else {
+          menu.classList.add("hidden");
+          icon.setAttribute("data-lucide", "menu");
+        }
+        lucide.createIcons();
+      }
+
+      // Handlers for contact emit
+      function handleContactSubmission(e) {
+        e.preventDefault();
+        
+        const name = document.getElementById("contact-name").value.trim();
+        const email = document.getElementById("contact-email").value.trim();
+        const subj = document.getElementById("contact-subj").value.trim() || 'GENERAL INQUIRY';
+        const msg = document.getElementById("contact-msg").value.trim();
+
+        // Mechanical key click beep
+        playChirp('click');
+
+        showToast("MAIN-GRID: DETECTING METADATA ACCURACY...", "info");
+
+        setTimeout(() => {
+          // Play major chords success signature
+          playChirp('success');
+
+          showToast(`GRID DISPATCH COMPLETE // TRANSMISSION ENCRYPTED`, "success");
+          showToast(`EMITTER IDENTIFIER: ${name.toUpperCase()} // SYNAPSE FIRED`, "info");
+          
+          // clear inputs
+          document.getElementById("contact-name").value = "";
+          document.getElementById("contact-email").value = "";
+          document.getElementById("contact-subj").value = "";
+          document.getElementById("contact-msg").value = "";
+        }, 1200);
+      }
+    </script>
+  </body>
+</html>
